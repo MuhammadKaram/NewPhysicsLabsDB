@@ -1,0 +1,12 @@
+CREATE USER 'PhysicsDepartment'@'localhost' IDENTIFIED BY 'r8462oo0123t';
+
+
+GRANT ALL PRIVILEGES ON * . * TO 'PhysicsDepartment'@'localhost';
+
+
+FLUSH PRIVILEGES; 
+
+
+
+_> mysql -u PhysicsDepartment -p
+_> Password: ********
