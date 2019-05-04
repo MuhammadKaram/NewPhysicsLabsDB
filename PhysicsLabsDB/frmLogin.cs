@@ -50,6 +50,8 @@ namespace PhysicsLabsDB
             {
                 lblError.Text = "بيانات الدخول خطأ";
                 lblError.Visible = true;
+                txtUserName.Text = txtPassword.Text = string.Empty;
+                txtUserName.Focus();
             }
             else
             {
