@@ -5,6 +5,13 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="physics_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="account_types">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountType" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
         <EntityType Name="accounts">
           <Key>
             <PropertyRef Name="ID" />
@@ -15,12 +22,12 @@
           <Property Name="Respon" Type="int" Nullable="false" />
           <Property Name="AccountType" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="accounttypes">
+        <EntityType Name="Device_Status">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="AccountType" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="devices_tb">
           <Key>
@@ -60,10 +67,10 @@
           <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <Association Name="accounts$Accounts_AccountType_ID">
-          <End Role="accounttypes" Type="Self.accounttypes" Multiplicity="1" />
+          <End Role="account_types" Type="Self.account_types" Multiplicity="1" />
           <End Role="accounts" Type="Self.accounts" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="accounttypes">
+            <Principal Role="account_types">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="accounts">
@@ -84,14 +91,15 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="physics_dbModelStoreContainer">
-          <EntitySet Name="accounts" EntityType="Self.accounts" Schema="physics_db" store:Type="Tables" />
-          <EntitySet Name="accounttypes" EntityType="Self.accounttypes" Schema="physics_db" store:Type="Tables" />
-          <EntitySet Name="devices_tb" EntityType="Self.devices_tb" Schema="physics_db" store:Type="Tables" />
-          <EntitySet Name="exp" EntityType="Self.exp" Schema="physics_db" store:Type="Tables" />
-          <EntitySet Name="labs" EntityType="Self.labs" Schema="physics_db" store:Type="Tables" />
-          <EntitySet Name="respon" EntityType="Self.respon" Schema="physics_db" store:Type="Tables" />
+          <EntitySet Name="account_types" EntityType="Self.account_types" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="accounts" EntityType="Self.accounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Device_Status" EntityType="Self.Device_Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="devices_tb" EntityType="Self.devices_tb" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="exp" EntityType="Self.exp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="labs" EntityType="Self.labs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="respon" EntityType="Self.respon" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="accounts$Accounts_AccountType_ID" Association="Self.accounts$Accounts_AccountType_ID">
-            <End Role="accounttypes" EntitySet="accounttypes" />
+            <End Role="account_types" EntitySet="account_types" />
             <End Role="accounts" EntitySet="accounts" />
           </AssociationSet>
           <AssociationSet Name="accounts$Accounts_respon_ID" Association="Self.accounts$Accounts_respon_ID">
@@ -104,6 +112,14 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="physics_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="account_types">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="accounts" Relationship="Self.accounts_Accounts_AccountType_ID" FromRole="account_types" ToRole="accounts" />
+        </EntityType>
         <EntityType Name="account">
           <Key>
             <PropertyRef Name="ID" />
@@ -113,16 +129,15 @@
           <Property Name="UserPassword" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Respon" Type="Int32" Nullable="false" />
           <Property Name="AccountType" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="accounttype1" Relationship="Self.accounts_Accounts_AccountType_ID" FromRole="accounts" ToRole="accounttypes" />
+          <NavigationProperty Name="account_types" Relationship="Self.accounts_Accounts_AccountType_ID" FromRole="accounts" ToRole="account_types" />
           <NavigationProperty Name="respon1" Relationship="Self.accounts_Accounts_respon_ID" FromRole="accounts" ToRole="respon" />
         </EntityType>
-        <EntityType Name="accounttype">
+        <EntityType Name="Device_Status">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="AccountType1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="accounts" Relationship="Self.accounts_Accounts_AccountType_ID" FromRole="accounttypes" ToRole="accounts" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="devices_tb">
           <Key>
@@ -163,10 +178,10 @@
           <NavigationProperty Name="accounts" Relationship="Self.accounts_Accounts_respon_ID" FromRole="respon" ToRole="accounts" />
         </EntityType>
         <Association Name="accounts_Accounts_AccountType_ID">
-          <End Role="accounttypes" Type="Self.accounttype" Multiplicity="1" />
+          <End Role="account_types" Type="Self.account_types" Multiplicity="1" />
           <End Role="accounts" Type="Self.account" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="accounttypes">
+            <Principal Role="account_types">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="accounts">
@@ -187,14 +202,15 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="physics_dbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="account_types" EntityType="Self.account_types" />
           <EntitySet Name="accounts" EntityType="Self.account" />
-          <EntitySet Name="accounttypes" EntityType="Self.accounttype" />
+          <EntitySet Name="Device_Status" EntityType="Self.Device_Status" />
           <EntitySet Name="devices_tb" EntityType="Self.devices_tb" />
           <EntitySet Name="exps" EntityType="Self.exp" />
           <EntitySet Name="labs" EntityType="Self.lab" />
           <EntitySet Name="respons" EntityType="Self.respon" />
           <AssociationSet Name="accounts_Accounts_AccountType_ID" Association="Self.accounts_Accounts_AccountType_ID">
-            <End Role="accounttypes" EntitySet="accounttypes" />
+            <End Role="account_types" EntitySet="account_types" />
             <End Role="accounts" EntitySet="accounts" />
           </AssociationSet>
           <AssociationSet Name="accounts_Accounts_respon_ID" Association="Self.accounts_Accounts_respon_ID">
@@ -208,6 +224,14 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="physics_dbModelStoreContainer" CdmEntityContainer="physics_dbEntities">
+          <EntitySetMapping Name="account_types">
+            <EntityTypeMapping TypeName="physics_dbModel.account_types">
+              <MappingFragment StoreEntitySet="account_types">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="accounts">
             <EntityTypeMapping TypeName="physics_dbModel.account">
               <MappingFragment StoreEntitySet="accounts">
@@ -219,11 +243,11 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="accounttypes">
-            <EntityTypeMapping TypeName="physics_dbModel.accounttype">
-              <MappingFragment StoreEntitySet="accounttypes">
+          <EntitySetMapping Name="Device_Status">
+            <EntityTypeMapping TypeName="physics_dbModel.Device_Status">
+              <MappingFragment StoreEntitySet="Device_Status">
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="AccountType1" ColumnName="AccountType" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

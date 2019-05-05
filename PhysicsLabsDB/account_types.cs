@@ -12,15 +12,18 @@ namespace PhysicsLabsDB
     using System;
     using System.Collections.Generic;
     
-    public partial class account
+    public partial class account_types
     {
-        public int ID { get; set; }
-        public string UserName { get; set; }
-        public string UserPassword { get; set; }
-        public int Respon { get; set; }
-        public int AccountType { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public account_types()
+        {
+            this.accounts = new HashSet<account>();
+        }
     
-        public virtual account_types account_types { get; set; }
-        public virtual respon respon1 { get; set; }
+        public int ID { get; set; }
+        public string AccountType { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<account> accounts { get; set; }
     }
 }

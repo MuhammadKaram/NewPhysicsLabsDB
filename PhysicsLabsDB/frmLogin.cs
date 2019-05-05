@@ -30,18 +30,18 @@ namespace PhysicsLabsDB
             Login();
         }
 
-        protected override void OnKeyDown(KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                SelectNextControl(ActiveControl, true, true, true, true);
-                if(ActiveControl == btnLogin)
-                {
-                    Login();
-                }
-                e.Handled = true;
-            }
-        }
+        //protected override void OnKeyDown(KeyEventArgs e)
+        //{
+        //    if (e.KeyCode == Keys.Enter)
+        //    {
+        //        SelectNextControl(ActiveControl, true, true, true, true);
+        //        if(ActiveControl == btnLogin)
+        //        {
+        //            Login();
+        //        }
+        //        e.Handled = true;
+        //    }
+        //}
 
         private void Login()
         {

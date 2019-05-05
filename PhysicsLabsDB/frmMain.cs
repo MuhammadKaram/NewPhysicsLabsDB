@@ -12,6 +12,8 @@ namespace PhysicsLabsDB
 {
     public partial class frmMain : Form
     {
+        public physics_dbEntities db = new physics_dbEntities();
+
         public frmMain()
         {
             InitializeComponent();
@@ -20,6 +22,13 @@ namespace PhysicsLabsDB
         private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            Search.frmSearch frmSearch = new Search.frmSearch();
+            frmSearch.MdiParent = this;
+            frmSearch.Show();
         }
     }
 }

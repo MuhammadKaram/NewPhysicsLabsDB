@@ -25,8 +25,9 @@ namespace PhysicsLabsDB
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<account_types> account_types { get; set; }
         public virtual DbSet<account> accounts { get; set; }
-        public virtual DbSet<accounttype> accounttypes { get; set; }
+        public virtual DbSet<Device_Status> Device_Status { get; set; }
         public virtual DbSet<devices_tb> devices_tb { get; set; }
         public virtual DbSet<exp> exps { get; set; }
         public virtual DbSet<lab> labs { get; set; }

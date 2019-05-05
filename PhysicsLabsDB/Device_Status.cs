@@ -12,18 +12,9 @@ namespace PhysicsLabsDB
     using System;
     using System.Collections.Generic;
     
-    public partial class accounttype
+    public partial class Device_Status
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public accounttype()
-        {
-            this.accounts = new HashSet<account>();
-        }
-    
         public int ID { get; set; }
-        public string AccountType1 { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<account> accounts { get; set; }
+        public string Status { get; set; }
     }
 }
