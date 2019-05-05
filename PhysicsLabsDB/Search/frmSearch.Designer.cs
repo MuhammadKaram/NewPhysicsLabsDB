@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSearch));
-            this.grdVwSearch = new System.Windows.Forms.DataGridView();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.rdDevice = new System.Windows.Forms.RadioButton();
             this.rdExperiment = new System.Windows.Forms.RadioButton();
             this.rdEmployee = new System.Windows.Forms.RadioButton();
@@ -42,6 +42,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.chkLab = new System.Windows.Forms.CheckBox();
             this.chkStatus = new System.Windows.Forms.CheckBox();
+            this.grdVwSearch = new System.Windows.Forms.DataGridView();
             this.colDeviceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colBarcode = new System.Windows.Forms.DataGridViewLinkColumn();
             this.colLab = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,32 +51,10 @@
             this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colEmployee = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.grdVwSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picFacultyLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picDepartmentLogo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdVwSearch)).BeginInit();
             this.SuspendLayout();
-            // 
-            // grdVwSearch
-            // 
-            this.grdVwSearch.AllowUserToAddRows = false;
-            this.grdVwSearch.AllowUserToDeleteRows = false;
-            this.grdVwSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grdVwSearch.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colDeviceName,
-            this.colBarcode,
-            this.colLab,
-            this.colExperiment,
-            this.colExperimentNum,
-            this.colStatus,
-            this.colEmployee,
-            this.colDescription});
-            this.grdVwSearch.GridColor = System.Drawing.Color.White;
-            this.grdVwSearch.Location = new System.Drawing.Point(28, 209);
-            this.grdVwSearch.Name = "grdVwSearch";
-            this.grdVwSearch.ReadOnly = true;
-            this.grdVwSearch.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.grdVwSearch.Size = new System.Drawing.Size(1092, 355);
-            this.grdVwSearch.TabIndex = 0;
             // 
             // rdDevice
             // 
@@ -89,6 +68,7 @@
             this.rdDevice.TabStop = true;
             this.rdDevice.Text = "اسم الجهاز";
             this.rdDevice.UseVisualStyleBackColor = true;
+            this.rdDevice.CheckedChanged += new System.EventHandler(this.rdDevice_CheckedChanged);
             // 
             // rdExperiment
             // 
@@ -100,6 +80,7 @@
             this.rdExperiment.TabIndex = 3;
             this.rdExperiment.Text = "اسم التجربة";
             this.rdExperiment.UseVisualStyleBackColor = true;
+            this.rdExperiment.CheckedChanged += new System.EventHandler(this.rdDevice_CheckedChanged);
             // 
             // rdEmployee
             // 
@@ -111,6 +92,7 @@
             this.rdEmployee.TabIndex = 4;
             this.rdEmployee.Text = "صاحب العهدة";
             this.rdEmployee.UseVisualStyleBackColor = true;
+            this.rdEmployee.CheckedChanged += new System.EventHandler(this.rdDevice_CheckedChanged);
             // 
             // rdBarcode
             // 
@@ -122,6 +104,7 @@
             this.rdBarcode.TabIndex = 5;
             this.rdBarcode.Text = "الباركود";
             this.rdBarcode.UseVisualStyleBackColor = true;
+            this.rdBarcode.CheckedChanged += new System.EventHandler(this.rdDevice_CheckedChanged);
             // 
             // txtSearch
             // 
@@ -141,6 +124,7 @@
             this.cmbLab.Name = "cmbLab";
             this.cmbLab.Size = new System.Drawing.Size(237, 30);
             this.cmbLab.TabIndex = 6;
+            this.cmbLab.SelectedIndexChanged += new System.EventHandler(this.cmbLab_SelectedIndexChanged);
             // 
             // cmbStatus
             // 
@@ -151,6 +135,7 @@
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(200, 30);
             this.cmbStatus.TabIndex = 7;
+            this.cmbStatus.SelectedIndexChanged += new System.EventHandler(this.cmbStatus_SelectedIndexChanged);
             // 
             // picFacultyLogo
             // 
@@ -206,6 +191,34 @@
             this.chkStatus.UseVisualStyleBackColor = true;
             this.chkStatus.CheckedChanged += new System.EventHandler(this.chkStatus_CheckedChanged);
             // 
+            // grdVwSearch
+            // 
+            this.grdVwSearch.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.grdVwSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdVwSearch.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colDeviceName,
+            this.colBarcode,
+            this.colLab,
+            this.colExperiment,
+            this.colExperimentNum,
+            this.colStatus,
+            this.colEmployee,
+            this.colDescription});
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdVwSearch.DefaultCellStyle = dataGridViewCellStyle1;
+            this.grdVwSearch.Location = new System.Drawing.Point(28, 223);
+            this.grdVwSearch.Name = "grdVwSearch";
+            this.grdVwSearch.ReadOnly = true;
+            this.grdVwSearch.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.grdVwSearch.Size = new System.Drawing.Size(1092, 340);
+            this.grdVwSearch.TabIndex = 9;
+            // 
             // colDeviceName
             // 
             this.colDeviceName.HeaderText = "اسم الجهاز";
@@ -229,6 +242,8 @@
             this.colExperiment.HeaderText = "التجربة";
             this.colExperiment.Name = "colExperiment";
             this.colExperiment.ReadOnly = true;
+            this.colExperiment.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colExperiment.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // colExperimentNum
             // 
@@ -261,6 +276,7 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1150, 590);
+            this.Controls.Add(this.grdVwSearch);
             this.Controls.Add(this.chkStatus);
             this.Controls.Add(this.chkLab);
             this.Controls.Add(this.label1);
@@ -273,7 +289,6 @@
             this.Controls.Add(this.rdEmployee);
             this.Controls.Add(this.rdExperiment);
             this.Controls.Add(this.rdDevice);
-            this.Controls.Add(this.grdVwSearch);
             this.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
@@ -283,17 +298,15 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmLabs";
             this.Load += new System.EventHandler(this.frmSearch_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.grdVwSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picFacultyLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picDepartmentLogo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdVwSearch)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView grdVwSearch;
         private System.Windows.Forms.RadioButton rdDevice;
         private System.Windows.Forms.RadioButton rdExperiment;
         private System.Windows.Forms.RadioButton rdEmployee;
@@ -306,6 +319,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox chkLab;
         private System.Windows.Forms.CheckBox chkStatus;
+        private System.Windows.Forms.DataGridView grdVwSearch;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDeviceName;
         private System.Windows.Forms.DataGridViewLinkColumn colBarcode;
         private System.Windows.Forms.DataGridViewTextBoxColumn colLab;

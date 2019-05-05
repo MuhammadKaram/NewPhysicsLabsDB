@@ -24,7 +24,7 @@ namespace PhysicsLabsDB.Search
         {
             cmbStatus.DataSource = db.Device_Status.Select(u => u.Status).ToArray();
             cmbLab.DataSource = db.labs.Select(u => u.lab_name).ToArray();
-            grdVwSearch.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            //grdVwSearch.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             grdVwSearch.AutoGenerateColumns = false;
             Search();
         }
@@ -106,6 +106,21 @@ namespace PhysicsLabsDB.Search
             grdVwSearch.Columns["colEmployee"].DataPropertyName = "respon";
             grdVwSearch.Columns["colDescription"].DataPropertyName = "description";
             grdVwSearch.DataSource = result;
+        }
+
+        private void cmbLab_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Search();
+        }
+
+        private void cmbStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Search();
+        }
+
+        private void rdDevice_CheckedChanged(object sender, EventArgs e)
+        {
+            Search();
         }
     }
 }
