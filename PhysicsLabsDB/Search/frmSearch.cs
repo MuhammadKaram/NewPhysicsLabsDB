@@ -56,13 +56,12 @@ namespace PhysicsLabsDB.Search
 
         public void Search()
         {
-            object device, experiment, employee, lab, status;
-            object barcode;
-            if (rdDevice.Checked == true) { device = txtSearch.Text; } else { device = DBNull.Value; }
-            if (rdExperiment.Checked == true) { experiment = txtSearch.Text; } else { experiment = DBNull.Value; }
-            if (rdEmployee.Checked == true) { employee = txtSearch.Text; } else { employee = DBNull.Value; }
-            if (rdBarcode.Checked == true) { barcode = txtSearch.Text; } else { barcode = DBNull.Value; }
-            if (chkLab.Checked == true) { lab = cmbLab.SelectedText; } else { lab = DBNull.Value; }
+            object device, experiment, employee, lab, status, barcode;
+            if (rdDevice.Checked == true) { device = txtSearch.Text.Trim(); } else { device = DBNull.Value; }
+            if (rdExperiment.Checked == true) { experiment = txtSearch.Text.Trim(); } else { experiment = DBNull.Value; }
+            if (rdEmployee.Checked == true) { employee = txtSearch.Text.Trim(); } else { employee = DBNull.Value; }
+            if (rdBarcode.Checked == true) { barcode = txtSearch.Text.Trim(); } else { barcode = DBNull.Value; }
+            if (chkLab.Checked == true) { lab = cmbLab.SelectedItem; } else { lab = DBNull.Value; }
             if (chkStatus.Checked == true) { status = cmbStatus.SelectedItem; } else { status = DBNull.Value; }
 
             // must add reference to System.Configuration  from assemblies

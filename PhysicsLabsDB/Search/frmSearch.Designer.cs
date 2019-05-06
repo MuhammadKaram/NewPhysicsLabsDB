@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSearch));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.rdDevice = new System.Windows.Forms.RadioButton();
             this.rdExperiment = new System.Windows.Forms.RadioButton();
             this.rdEmployee = new System.Windows.Forms.RadioButton();
@@ -60,10 +59,11 @@
             // 
             this.rdDevice.AutoSize = true;
             this.rdDevice.Checked = true;
-            this.rdDevice.Location = new System.Drawing.Point(1025, 171);
+            this.rdDevice.Location = new System.Drawing.Point(1041, 151);
+            this.rdDevice.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.rdDevice.Name = "rdDevice";
             this.rdDevice.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.rdDevice.Size = new System.Drawing.Size(95, 26);
+            this.rdDevice.Size = new System.Drawing.Size(85, 23);
             this.rdDevice.TabIndex = 2;
             this.rdDevice.TabStop = true;
             this.rdDevice.Text = "اسم الجهاز";
@@ -73,10 +73,11 @@
             // rdExperiment
             // 
             this.rdExperiment.AutoSize = true;
-            this.rdExperiment.Location = new System.Drawing.Point(909, 171);
+            this.rdExperiment.Location = new System.Drawing.Point(944, 151);
+            this.rdExperiment.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.rdExperiment.Name = "rdExperiment";
             this.rdExperiment.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.rdExperiment.Size = new System.Drawing.Size(100, 26);
+            this.rdExperiment.Size = new System.Drawing.Size(89, 23);
             this.rdExperiment.TabIndex = 3;
             this.rdExperiment.Text = "اسم التجربة";
             this.rdExperiment.UseVisualStyleBackColor = true;
@@ -85,10 +86,11 @@
             // rdEmployee
             // 
             this.rdEmployee.AutoSize = true;
-            this.rdEmployee.Location = new System.Drawing.Point(781, 171);
+            this.rdEmployee.Location = new System.Drawing.Point(838, 151);
+            this.rdEmployee.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.rdEmployee.Name = "rdEmployee";
             this.rdEmployee.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.rdEmployee.Size = new System.Drawing.Size(112, 26);
+            this.rdEmployee.Size = new System.Drawing.Size(96, 23);
             this.rdEmployee.TabIndex = 4;
             this.rdEmployee.Text = "صاحب العهدة";
             this.rdEmployee.UseVisualStyleBackColor = true;
@@ -97,10 +99,11 @@
             // rdBarcode
             // 
             this.rdBarcode.AutoSize = true;
-            this.rdBarcode.Location = new System.Drawing.Point(690, 171);
+            this.rdBarcode.Location = new System.Drawing.Point(762, 151);
+            this.rdBarcode.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.rdBarcode.Name = "rdBarcode";
             this.rdBarcode.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.rdBarcode.Size = new System.Drawing.Size(76, 26);
+            this.rdBarcode.Size = new System.Drawing.Size(68, 23);
             this.rdBarcode.TabIndex = 5;
             this.rdBarcode.Text = "الباركود";
             this.rdBarcode.UseVisualStyleBackColor = true;
@@ -108,9 +111,10 @@
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(304, 102);
+            this.txtSearch.Location = new System.Drawing.Point(353, 88);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(531, 29);
+            this.txtSearch.Size = new System.Drawing.Size(443, 26);
             this.txtSearch.TabIndex = 1;
             this.txtSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
@@ -120,9 +124,10 @@
             this.cmbLab.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbLab.Enabled = false;
             this.cmbLab.FormattingEnabled = true;
-            this.cmbLab.Location = new System.Drawing.Point(352, 170);
+            this.cmbLab.Location = new System.Drawing.Point(380, 147);
+            this.cmbLab.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.cmbLab.Name = "cmbLab";
-            this.cmbLab.Size = new System.Drawing.Size(237, 30);
+            this.cmbLab.Size = new System.Drawing.Size(228, 27);
             this.cmbLab.TabIndex = 6;
             this.cmbLab.SelectedIndexChanged += new System.EventHandler(this.cmbLab_SelectedIndexChanged);
             // 
@@ -131,18 +136,20 @@
             this.cmbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbStatus.Enabled = false;
             this.cmbStatus.FormattingEnabled = true;
-            this.cmbStatus.Location = new System.Drawing.Point(28, 170);
+            this.cmbStatus.Location = new System.Drawing.Point(23, 147);
+            this.cmbStatus.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.cmbStatus.Name = "cmbStatus";
-            this.cmbStatus.Size = new System.Drawing.Size(200, 30);
+            this.cmbStatus.Size = new System.Drawing.Size(228, 27);
             this.cmbStatus.TabIndex = 7;
             this.cmbStatus.SelectedIndexChanged += new System.EventHandler(this.cmbStatus_SelectedIndexChanged);
             // 
             // picFacultyLogo
             // 
             this.picFacultyLogo.Image = ((System.Drawing.Image)(resources.GetObject("picFacultyLogo.Image")));
-            this.picFacultyLogo.Location = new System.Drawing.Point(1001, 28);
+            this.picFacultyLogo.Location = new System.Drawing.Point(1027, 24);
+            this.picFacultyLogo.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.picFacultyLogo.Name = "picFacultyLogo";
-            this.picFacultyLogo.Size = new System.Drawing.Size(119, 121);
+            this.picFacultyLogo.Size = new System.Drawing.Size(99, 105);
             this.picFacultyLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picFacultyLogo.TabIndex = 5;
             this.picFacultyLogo.TabStop = false;
@@ -150,9 +157,10 @@
             // picDepartmentLogo
             // 
             this.picDepartmentLogo.Image = ((System.Drawing.Image)(resources.GetObject("picDepartmentLogo.Image")));
-            this.picDepartmentLogo.Location = new System.Drawing.Point(28, 28);
+            this.picDepartmentLogo.Location = new System.Drawing.Point(23, 24);
+            this.picDepartmentLogo.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.picDepartmentLogo.Name = "picDepartmentLogo";
-            this.picDepartmentLogo.Size = new System.Drawing.Size(119, 121);
+            this.picDepartmentLogo.Size = new System.Drawing.Size(99, 105);
             this.picDepartmentLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picDepartmentLogo.TabIndex = 5;
             this.picDepartmentLogo.TabStop = false;
@@ -161,7 +169,8 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(467, 43);
+            this.label1.Location = new System.Drawing.Point(476, 37);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(218, 29);
             this.label1.TabIndex = 6;
@@ -170,10 +179,11 @@
             // chkLab
             // 
             this.chkLab.AutoSize = true;
-            this.chkLab.Location = new System.Drawing.Point(595, 172);
+            this.chkLab.Location = new System.Drawing.Point(613, 149);
+            this.chkLab.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.chkLab.Name = "chkLab";
             this.chkLab.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.chkLab.Size = new System.Drawing.Size(69, 26);
+            this.chkLab.Size = new System.Drawing.Size(63, 23);
             this.chkLab.TabIndex = 8;
             this.chkLab.Text = "المعمل";
             this.chkLab.UseVisualStyleBackColor = true;
@@ -182,10 +192,11 @@
             // chkStatus
             // 
             this.chkStatus.AutoSize = true;
-            this.chkStatus.Location = new System.Drawing.Point(234, 172);
+            this.chkStatus.Location = new System.Drawing.Point(256, 149);
+            this.chkStatus.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.chkStatus.Name = "chkStatus";
             this.chkStatus.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.chkStatus.Size = new System.Drawing.Size(99, 26);
+            this.chkStatus.Size = new System.Drawing.Size(89, 23);
             this.chkStatus.TabIndex = 8;
             this.chkStatus.Text = "حالة الجهاز";
             this.chkStatus.UseVisualStyleBackColor = true;
@@ -204,19 +215,12 @@
             this.colStatus,
             this.colEmployee,
             this.colDescription});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdVwSearch.DefaultCellStyle = dataGridViewCellStyle1;
-            this.grdVwSearch.Location = new System.Drawing.Point(28, 223);
+            this.grdVwSearch.Location = new System.Drawing.Point(23, 193);
+            this.grdVwSearch.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.grdVwSearch.Name = "grdVwSearch";
             this.grdVwSearch.ReadOnly = true;
             this.grdVwSearch.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.grdVwSearch.Size = new System.Drawing.Size(1092, 340);
+            this.grdVwSearch.Size = new System.Drawing.Size(1103, 332);
             this.grdVwSearch.TabIndex = 9;
             // 
             // colDeviceName
@@ -271,11 +275,11 @@
             // 
             // frmSearch
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 22F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1150, 590);
+            this.ClientSize = new System.Drawing.Size(1150, 550);
             this.Controls.Add(this.grdVwSearch);
             this.Controls.Add(this.chkStatus);
             this.Controls.Add(this.chkLab);
@@ -289,9 +293,9 @@
             this.Controls.Add(this.rdEmployee);
             this.Controls.Add(this.rdExperiment);
             this.Controls.Add(this.rdDevice);
-            this.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmSearch";

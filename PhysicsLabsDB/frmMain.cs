@@ -30,5 +30,23 @@ namespace PhysicsLabsDB
             frmSearch.MdiParent = this;
             frmSearch.Show();
         }
+
+        private void tsbtnDevices_Click(object sender, EventArgs e)
+        {
+            if (ActiveMdiChild != null)
+                ActiveMdiChild.Close();
+            Devices.frmDevice frmDevice = new Devices.frmDevice();
+            frmDevice.MdiParent = this;
+            frmDevice.Show();
+        }
+
+        private void tsbtnMain_Click(object sender, EventArgs e)
+        {
+            if (ActiveMdiChild != null)
+                ActiveMdiChild.Close();
+            Search.frmSearch frmSearch = new Search.frmSearch();
+            frmSearch.MdiParent = this;
+            frmSearch.Show();
+        }
     }
 }
