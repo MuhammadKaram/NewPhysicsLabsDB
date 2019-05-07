@@ -31,6 +31,7 @@ namespace PhysicsLabsDB.Devices
             cmbExperimentNum.SelectedItem = null;
             cmbLab.SelectedItem = null;
             cmbStatus.SelectedItem = null;
+            picBarcode.Image = null;
         }
 
         public void ControlStatus(bool status)
@@ -42,15 +43,70 @@ namespace PhysicsLabsDB.Devices
             cmbExperiment.Enabled =
             cmbExperimentNum.Enabled =
             cmbLab.Enabled =
-            cmbStatus.Enabled = status;
+            cmbStatus.Enabled =
+            btnDisplayBarcode.Enabled = status;
 
             pnlOpenSearch.Enabled = status;
         }
 
+        private enum Status
+        {
+            New,
+            Edit,
+            Reset,
+            Save
+        };
+
+        Status CurrentStatus = Status.Reset;
+
+        private void ToolStripButtonStatus(Status status)
+        {
+            CurrentStatus = status;
+
+            if (status == Status.New)
+            {
+                newToolStripButton.Enabled = false;
+                openToolStripButton.Enabled = false;
+                saveToolStripButton.Enabled = true;
+                delToolStripButton.Enabled = false;
+                resetToolStripButton.Enabled = true;
+            }
+            if (status == Status.Edit)
+            {
+                newToolStripButton.Enabled = false;
+                openToolStripButton.Enabled = false;
+                saveToolStripButton.Enabled = true;
+                delToolStripButton.Enabled = true;
+                resetToolStripButton.Enabled = true;
+            }
+            if (status == Status.Reset)
+            {
+                newToolStripButton.Enabled = true;
+                openToolStripButton.Enabled = true;
+                saveToolStripButton.Enabled = false;
+                delToolStripButton.Enabled = false;
+                resetToolStripButton.Enabled = false;
+            }
+            if (status == Status.Save)
+            {
+                newToolStripButton.Enabled = true;
+                openToolStripButton.Enabled = true;
+                saveToolStripButton.Enabled = false;
+                delToolStripButton.Enabled = false;
+                resetToolStripButton.Enabled = true;
+            }
+        }
+
         private void frmDevice_Load(object sender, EventArgs e)
         {
+            cmbEmployee.DataSource = db.respons.Select(u => u.name).ToList();
+            //cmbExperiment.DataSource = db.exps.Select(u => u.exp_name).ToList();
+            //cmbExperimentNum.DataSource = db.exps.Select(u => u.exp_num);
+            cmbLab.DataSource = db.labs.Select(u => u.lab_name).ToList();
+            cmbStatus.DataSource = db.Device_Status.Select(u => u.Status).ToList();
             ClearControls();
             ControlStatus(false);
+            ToolStripButtonStatus(Status.Reset);
         }
 
         private void newToolStripButton_Click(object sender, EventArgs e)
@@ -58,29 +114,116 @@ namespace PhysicsLabsDB.Devices
             ClearControls();
             ControlStatus(true);
             pnlOpenSearch.Enabled = false;
+            ToolStripButtonStatus(Status.New);
             // todo
         }
 
         private void saveToolStripButton_Click(object sender, EventArgs e)
         {
-            //todo
-            //..
-            //ClearControls();
-            ControlStatus(false);
+            string error = string.Empty;
+            if (txtDeviceName.Text == string.Empty)
+                error += "إدخل اسم الجهاز\n";
+            if (cmbLab.SelectedItem == null)
+                error += "اختر المعمل\n";
+            if (cmbExperiment.SelectedItem == null)
+                error += "اختر التجربة\n";
+            if (cmbStatus.SelectedItem == null)
+                error += "اختر حالة الجهاز\n";
+
+            if (error != string.Empty)
+            {
+                MessageBox.Show(error, "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                try
+                {
+                    if (CurrentStatus == Status.New)
+                    {
+                        GenerateBarcode();
+
+                        var device = new devices_tb()
+                        {
+                            device_name = txtDeviceName.Text,
+                            device_barcode = Convert.ToDecimal(txtBarcode.Text),
+                            device_status = cmbStatus.Text,
+                            lab_name = cmbLab.Text,
+                            exp_name = cmbExperiment.Text,
+                            exp_num = Convert.ToInt32(cmbExperimentNum.SelectedItem == null ? 0 : Convert.ToInt32(cmbExperimentNum.Text)),
+                            respon = cmbEmployee.Text,
+                            description = txtDescription.Text
+                        };
+
+                        db.devices_tb.Add(device);
+                        db.SaveChanges();
+
+                        MessageBox.Show("تم الحفظ", "تم", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        //ClearControls();
+                        ControlStatus(false);
+                        ToolStripButtonStatus(Status.Save);
+                    }
+                    if (CurrentStatus == Status.Edit)
+                    {
+                        var selectedItemBarcode = Convert.ToDecimal(txtBarcode.Text);
+                        var device = db.devices_tb.FirstOrDefault(u => u.device_barcode == selectedItemBarcode);
+                        device.device_name = txtDeviceName.Text;
+                        device.device_barcode = Convert.ToDecimal(txtBarcode.Text);
+                        device.device_status = cmbStatus.Text;
+                        device.lab_name = cmbLab.Text;
+                        device.exp_name = cmbExperiment.Text;
+                        device.exp_num = Convert.ToInt32(cmbExperimentNum.SelectedItem == null ? 0 : Convert.ToInt32(cmbExperimentNum.Text));
+                        device.respon = cmbEmployee.Text;
+                        device.description = txtDescription.Text;
+                        db.SaveChanges();
+
+                        MessageBox.Show("تم التعديل", "تم", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        //ClearControls();
+                        ControlStatus(false);
+                        ToolStripButtonStatus(Status.Save);
+                        Search();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString(), "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
         }
 
         private void delToolStripButton_Click(object sender, EventArgs e)
         {
             //todo
             //..
-            ClearControls();
-            ControlStatus(false);
+            try
+            {
+                var selectedItemBarcode = Convert.ToDecimal(txtBarcode.Text);
+                var device = db.devices_tb.FirstOrDefault(u => u.device_barcode == selectedItemBarcode);
+                db.devices_tb.Remove(device);
+                db.SaveChanges();
+
+                MessageBox.Show("تم الحذف", "تم", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                ClearControls();
+                ControlStatus(false);
+                ToolStripButtonStatus(Status.Reset);
+                Search();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void openToolStripButton_Click(object sender, EventArgs e)
         {
             ClearControls();
             ControlStatus(false);
+            ToolStripButtonStatus(Status.Edit);
+            //btnDisplayBarcode.Enabled = false;
             pnlOpenSearch.Enabled = true;
             txtSearch.Focus();
             Search();
@@ -91,7 +234,7 @@ namespace PhysicsLabsDB.Devices
             object device, barcode;
             if (rdDevice.Checked == true) { device = txtSearch.Text.Trim(); } else { device = DBNull.Value; }
             if (rdBarcode.Checked == true) { barcode = txtSearch.Text.Trim(); } else { barcode = DBNull.Value; }
-            
+
             // must add reference to System.Configuration  from assemblies
             SqlConnection connection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringSQL"].ConnectionString);
             SqlDataAdapter data_adabter = new SqlDataAdapter();
@@ -135,10 +278,31 @@ namespace PhysicsLabsDB.Devices
         public void GenerateBarcode()
         {
             // To uniqe the bar code
-            int? maxBarcodeDeviceID = db.devices_tb.Select(u => u.ID).Max();
+            int? maxBarcodeDeviceID = db.devices_tb.Max(u => u.ID);//Select(u => u.ID).Max();
             // For first barcode
             maxBarcodeDeviceID = maxBarcodeDeviceID == null ? 0 : maxBarcodeDeviceID;
+            maxBarcodeDeviceID += 1;
 
+            string myBarCode = string.Empty;
+            // Get the first two characters from debended items and get its ASCII code using "Convert.ToInt32"
+            myBarCode = myBarCode + maxBarcodeDeviceID 
+                + Convert.ToInt32(cmbLab.Text[0]) + Convert.ToInt32(cmbLab.Text[1])
+                + Convert.ToInt32(cmbExperiment.Text[0]) + Convert.ToInt32(cmbExperiment.Text[1])
+                + Convert.ToInt32(txtDeviceName.Text[0]) + Convert.ToInt32(txtDeviceName.Text[1]);
+                //+maxBarcodeDeviceID
+
+            myBarCode = myBarCode.Substring(myBarCode.Length - 13);
+
+            //if (myBarCode[0] == '0')
+            //    myBarCode = '1' + myBarCode.Substring(1);
+
+            txtBarcode.Text = myBarCode;
+            Zen.Barcode.Code128BarcodeDraw barcode = Zen.Barcode.BarcodeDrawFactory.Code128WithChecksum;
+            picBarcode.Image = barcode.Draw(myBarCode, 50);
+        }
+
+        private void btnDisplayBarcode_Click(object sender, EventArgs e)
+        {
             string error = string.Empty;
             if (txtDeviceName.Text == string.Empty)
                 error += "إدخل اسم الجهاز\n";
@@ -149,30 +313,80 @@ namespace PhysicsLabsDB.Devices
 
             if (error != string.Empty)
             {
-                MessageBox.Show(error);
+                MessageBox.Show(error, "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-            string myBarCode = string.Empty;
-            // Get the first two characters from debended items and get its ASCII code using "Convert.ToInt32"
-            myBarCode = myBarCode + Convert.ToInt32(cmbLab.Text[0]) + Convert.ToInt32(cmbLab.Text[1])
-                + Convert.ToInt32(cmbExperiment.Text[0]) + Convert.ToInt32(cmbExperiment.Text[1])
-                + Convert.ToInt32(txtDeviceName.Text[0]) + Convert.ToInt32(txtDeviceName.Text[1]) 
-                + maxBarcodeDeviceID;
-            
-            myBarCode = myBarCode.Substring(myBarCode.Length - 13);
-
-            if (myBarCode[0] == '0')
-                myBarCode = '1' + myBarCode.Substring(1);
-
-            txtBarcode.Text = myBarCode;
-            Zen.Barcode.Code128BarcodeDraw barcode = Zen.Barcode.BarcodeDrawFactory.Code128WithChecksum;
-            picBarcode.Image = barcode.Draw(myBarCode, 50);
+            else
+            {
+                GenerateBarcode();
+            }
         }
 
-        private void btnDisplayBarcode_Click(object sender, EventArgs e)
+        private void cmbLab_SelectedIndexChanged(object sender, EventArgs e)
         {
-            GenerateBarcode();
+            FillcmbExperiment();
+            FillcmbExperimentNum();
+        }
+
+        private void cmbExperiment_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FillcmbExperimentNum();
+        }
+
+        public void FillcmbExperimentNum()
+        {
+            if (cmbExperiment.SelectedItem == null)
+            {
+                cmbExperimentNum.DataSource = null;
+            }
+            else
+            {
+                var experiment = db.exps.Where(u => u.exp_name == cmbExperiment.Text).Select(u => u.exp_num).Distinct().ToList();
+                cmbExperimentNum.DataSource = experiment;
+            }
+        }
+
+        public void FillcmbExperiment()
+        {
+            if (cmbLab.SelectedItem == null)
+            {
+                cmbExperiment.DataSource = null;
+            }
+            else
+            {
+                var experiment = db.exps.Where(u => u.lab_name == cmbLab.Text).Select(u => u.exp_name).Distinct().ToList();
+                experiment.Add("بدون تجربة");
+                cmbExperiment.DataSource = experiment;
+            }
+        }
+
+        private void resetToolStripButton_Click(object sender, EventArgs e)
+        {
+            //cmbEmployee.DataSource = db.respons.Select(u => u.name).ToList();
+            //cmbLab.DataSource = db.labs.Select(u => u.lab_name).ToList();
+            //cmbStatus.DataSource = db.Device_Status.Select(u => u.Status).ToList();
+            ClearControls();
+            ControlStatus(false);
+            ToolStripButtonStatus(Status.Reset);
+        }
+
+        private void grdVwSearch_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var rowIndex = grdVwSearch.SelectedCells[0].RowIndex;
+            ClearControls();
+            ControlStatus(true);
+            btnDisplayBarcode.Enabled = false;
+            //DataGridViewRow selectedRow = grdVwSearch.Rows[rowIndex];
+            txtDeviceName.Text = grdVwSearch.Rows[rowIndex].Cells[0].Value.ToString();
+            txtBarcode.Text = grdVwSearch.Rows[rowIndex].Cells[1].Value.ToString();
+            cmbLab.SelectedItem = grdVwSearch.Rows[rowIndex].Cells[2].Value.ToString();
+            cmbExperiment.SelectedItem = grdVwSearch.Rows[rowIndex].Cells[3].Value.ToString();
+            cmbExperimentNum.SelectedItem = grdVwSearch.Rows[rowIndex].Cells[4].Value.ToString();
+            cmbStatus.SelectedItem = grdVwSearch.Rows[rowIndex].Cells[5].Value.ToString();
+            cmbEmployee.SelectedItem = grdVwSearch.Rows[rowIndex].Cells[6].Value.ToString();
+            txtDescription.Text = grdVwSearch.Rows[rowIndex].Cells[7].Value.ToString();
+            Zen.Barcode.Code128BarcodeDraw barcode = Zen.Barcode.BarcodeDrawFactory.Code128WithChecksum;
+            picBarcode.Image = barcode.Draw(txtBarcode.Text, 50);
         }
     }
 }

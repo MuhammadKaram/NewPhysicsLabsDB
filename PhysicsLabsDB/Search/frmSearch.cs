@@ -22,8 +22,8 @@ namespace PhysicsLabsDB.Search
 
         private void frmSearch_Load(object sender, EventArgs e)
         {
-            cmbStatus.DataSource = db.Device_Status.Select(u => u.Status).ToArray();
-            cmbLab.DataSource = db.labs.Select(u => u.lab_name).ToArray();
+            cmbStatus.DataSource = db.Device_Status.Select(u => u.Status).ToList();
+            cmbLab.DataSource = db.labs.Select(u => u.lab_name).ToList();
             //grdVwSearch.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             grdVwSearch.AutoGenerateColumns = false;
             Search();

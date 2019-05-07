@@ -42,7 +42,7 @@
             this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.delToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.printToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.resetToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.txtDeviceName = new System.Windows.Forms.TextBox();
             this.cmbStatus = new System.Windows.Forms.ComboBox();
             this.cmbExperiment = new System.Windows.Forms.ComboBox();
@@ -160,7 +160,7 @@
             this.openToolStripButton,
             this.saveToolStripButton,
             this.delToolStripButton,
-            this.printToolStripButton});
+            this.resetToolStripButton});
             this.tstrpDevices.Location = new System.Drawing.Point(0, 0);
             this.tstrpDevices.Name = "tstrpDevices";
             this.tstrpDevices.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -208,14 +208,15 @@
             this.delToolStripButton.Text = "Delete";
             this.delToolStripButton.Click += new System.EventHandler(this.delToolStripButton_Click);
             // 
-            // printToolStripButton
+            // resetToolStripButton
             // 
-            this.printToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.printToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("printToolStripButton.Image")));
-            this.printToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.printToolStripButton.Name = "printToolStripButton";
-            this.printToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.printToolStripButton.Text = "&Print";
+            this.resetToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.resetToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("resetToolStripButton.Image")));
+            this.resetToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.resetToolStripButton.Name = "resetToolStripButton";
+            this.resetToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.resetToolStripButton.Text = "&Reset";
+            this.resetToolStripButton.Click += new System.EventHandler(this.resetToolStripButton_Click);
             // 
             // txtDeviceName
             // 
@@ -245,6 +246,7 @@
             this.cmbExperiment.Name = "cmbExperiment";
             this.cmbExperiment.Size = new System.Drawing.Size(246, 27);
             this.cmbExperiment.TabIndex = 3;
+            this.cmbExperiment.SelectedIndexChanged += new System.EventHandler(this.cmbExperiment_SelectedIndexChanged);
             // 
             // cmbLab
             // 
@@ -255,6 +257,7 @@
             this.cmbLab.Name = "cmbLab";
             this.cmbLab.Size = new System.Drawing.Size(246, 27);
             this.cmbLab.TabIndex = 3;
+            this.cmbLab.SelectedIndexChanged += new System.EventHandler(this.cmbLab_SelectedIndexChanged);
             // 
             // cmbExperimentNum
             // 
@@ -346,6 +349,8 @@
             // 
             // grdVwSearch
             // 
+            this.grdVwSearch.AllowUserToAddRows = false;
+            this.grdVwSearch.AllowUserToDeleteRows = false;
             this.grdVwSearch.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.grdVwSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdVwSearch.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -361,8 +366,10 @@
             this.grdVwSearch.Name = "grdVwSearch";
             this.grdVwSearch.ReadOnly = true;
             this.grdVwSearch.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.grdVwSearch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grdVwSearch.Size = new System.Drawing.Size(1119, 280);
             this.grdVwSearch.TabIndex = 22;
+            this.grdVwSearch.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdVwSearch_CellClick);
             // 
             // colDeviceName
             // 
@@ -502,7 +509,7 @@
         private System.Windows.Forms.ToolStripButton newToolStripButton;
         private System.Windows.Forms.ToolStripButton openToolStripButton;
         private System.Windows.Forms.ToolStripButton saveToolStripButton;
-        private System.Windows.Forms.ToolStripButton printToolStripButton;
+        private System.Windows.Forms.ToolStripButton resetToolStripButton;
         private System.Windows.Forms.TextBox txtDeviceName;
         private System.Windows.Forms.ComboBox cmbStatus;
         private System.Windows.Forms.ComboBox cmbExperiment;

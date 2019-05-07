@@ -204,6 +204,8 @@
             // 
             // grdVwSearch
             // 
+            this.grdVwSearch.AllowUserToAddRows = false;
+            this.grdVwSearch.AllowUserToDeleteRows = false;
             this.grdVwSearch.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.grdVwSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdVwSearch.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -220,7 +222,8 @@
             this.grdVwSearch.Name = "grdVwSearch";
             this.grdVwSearch.ReadOnly = true;
             this.grdVwSearch.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.grdVwSearch.Size = new System.Drawing.Size(1103, 332);
+            this.grdVwSearch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.grdVwSearch.Size = new System.Drawing.Size(1103, 333);
             this.grdVwSearch.TabIndex = 9;
             // 
             // colDeviceName
@@ -295,7 +298,7 @@
             this.Controls.Add(this.rdDevice);
             this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmSearch";

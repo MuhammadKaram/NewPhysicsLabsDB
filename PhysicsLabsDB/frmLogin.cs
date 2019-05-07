@@ -16,7 +16,7 @@ namespace PhysicsLabsDB
         //// must add reference to System.Configuration  from assemblies
         //SqlConnection connection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
 
-        public physics_dbEntities db = new physics_dbEntities();
+        physics_dbEntities db = new physics_dbEntities();
 
         public static account loggedUser = new account();
 

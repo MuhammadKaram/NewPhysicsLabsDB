@@ -12,7 +12,7 @@ namespace PhysicsLabsDB
 {
     public partial class frmMain : Form
     {
-        public physics_dbEntities db = new physics_dbEntities();
+        physics_dbEntities db = new physics_dbEntities();
 
         public frmMain()
         {
