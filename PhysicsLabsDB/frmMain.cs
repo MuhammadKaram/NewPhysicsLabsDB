@@ -48,5 +48,14 @@ namespace PhysicsLabsDB
             frmSearch.MdiParent = this;
             frmSearch.Show();
         }
-    }
+
+		private void tsbtnCustody_Click(object sender, EventArgs e)
+		{
+			if (ActiveMdiChild != null)
+				ActiveMdiChild.Close();
+			Custody.frmCustody frmCustody = new Custody.frmCustody();
+			frmCustody.MdiParent = this;
+			frmCustody.Show();
+		}
+	}
 }
