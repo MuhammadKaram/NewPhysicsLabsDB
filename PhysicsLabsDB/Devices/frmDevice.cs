@@ -14,11 +14,37 @@ namespace PhysicsLabsDB.Devices
     public partial class frmDevice : Form
     {
         physics_dbEntities db = new physics_dbEntities();
-        object currentDevice;
+        public devices_tb currentDevice = null;
+
+        Status CurrentStatus = Status.Reset;
 
         public frmDevice()
         {
             InitializeComponent();
+        }
+
+        public frmDevice(devices_tb currentDevice)// : base()
+        {
+            this.currentDevice = currentDevice;
+
+            InitializeComponent();
+
+            ClearControls();
+            ControlStatus(true);
+            btnDisplayBarcode.Enabled = false;
+            ToolStripButtonStatus(Status.Edit);
+            pnlOpenSearch.Enabled = true;
+            Search();
+            txtDeviceName.Text = currentDevice.device_name;
+            txtBarcode.Text = currentDevice.device_barcode.ToString();
+            cmbLab.SelectedItem = currentDevice.lab_name;
+            cmbExperiment.SelectedItem = currentDevice.exp_name;
+            cmbExperimentNum.SelectedItem = currentDevice.exp_num;
+            cmbStatus.SelectedItem = currentDevice.device_status;
+            cmbEmployee.SelectedItem = currentDevice.respon;
+            txtDescription.Text = currentDevice.description;
+            Zen.Barcode.Code128BarcodeDraw barcode = Zen.Barcode.BarcodeDrawFactory.Code128WithChecksum;
+            picBarcode.Image = barcode.Draw(currentDevice.device_barcode.ToString(), 50);
         }
 
         public void ClearControls()
@@ -56,8 +82,6 @@ namespace PhysicsLabsDB.Devices
             Reset,
             Save
         };
-
-        Status CurrentStatus = Status.Reset;
 
         private void ToolStripButtonStatus(Status status)
         {
@@ -104,9 +128,12 @@ namespace PhysicsLabsDB.Devices
             //cmbExperimentNum.DataSource = db.exps.Select(u => u.exp_num);
             cmbLab.DataSource = db.labs.Select(u => u.lab_name).ToList();
             cmbStatus.DataSource = db.Device_Status.Select(u => u.Status).ToList();
-            ClearControls();
-            ControlStatus(false);
-            ToolStripButtonStatus(Status.Reset);
+            if (currentDevice == null)
+            {
+                ClearControls();
+                ControlStatus(false);
+                ToolStripButtonStatus(Status.Reset);
+            }
         }
 
         private void newToolStripButton_Click(object sender, EventArgs e)
@@ -372,7 +399,7 @@ namespace PhysicsLabsDB.Devices
 
         private void grdVwSearch_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            var rowIndex = grdVwSearch.SelectedCells[0].RowIndex;
+            var rowIndex = grdVwSearch.CurrentRow.Index; //SelectedCells[0].RowIndex;
             ClearControls();
             ControlStatus(true);
             btnDisplayBarcode.Enabled = false;

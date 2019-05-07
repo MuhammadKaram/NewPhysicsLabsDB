@@ -121,5 +121,19 @@ namespace PhysicsLabsDB.Search
         {
             Search();
         }
+
+        private void grdVwSearch_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.ColumnIndex == 1)
+            {
+                var selectedItemBarcode = Convert.ToDecimal(grdVwSearch.CurrentCell.Value);
+                var device = db.devices_tb.FirstOrDefault(u => u.device_barcode == selectedItemBarcode);
+                Devices.frmDevice frmDevice = new Devices.frmDevice(device);
+                frmDevice.MdiParent = this.MdiParent;
+                if (this.MdiParent.ActiveMdiChild != null)
+                    this.MdiParent.ActiveMdiChild.Close();
+                frmDevice.Show();
+            }
+        }
     }
 }

@@ -127,6 +127,7 @@
             this.cmbLab.Location = new System.Drawing.Point(380, 147);
             this.cmbLab.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.cmbLab.Name = "cmbLab";
+            this.cmbLab.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.cmbLab.Size = new System.Drawing.Size(228, 27);
             this.cmbLab.TabIndex = 6;
             this.cmbLab.SelectedIndexChanged += new System.EventHandler(this.cmbLab_SelectedIndexChanged);
@@ -139,6 +140,7 @@
             this.cmbStatus.Location = new System.Drawing.Point(23, 147);
             this.cmbStatus.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.cmbStatus.Name = "cmbStatus";
+            this.cmbStatus.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.cmbStatus.Size = new System.Drawing.Size(228, 27);
             this.cmbStatus.TabIndex = 7;
             this.cmbStatus.SelectedIndexChanged += new System.EventHandler(this.cmbStatus_SelectedIndexChanged);
@@ -225,6 +227,7 @@
             this.grdVwSearch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grdVwSearch.Size = new System.Drawing.Size(1103, 333);
             this.grdVwSearch.TabIndex = 9;
+            this.grdVwSearch.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdVwSearch_CellContentClick);
             // 
             // colDeviceName
             // 

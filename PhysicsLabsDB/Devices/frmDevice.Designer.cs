@@ -234,6 +234,7 @@
             this.cmbStatus.Location = new System.Drawing.Point(389, 38);
             this.cmbStatus.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.cmbStatus.Name = "cmbStatus";
+            this.cmbStatus.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.cmbStatus.Size = new System.Drawing.Size(246, 27);
             this.cmbStatus.TabIndex = 3;
             // 
@@ -244,6 +245,7 @@
             this.cmbExperiment.Location = new System.Drawing.Point(389, 104);
             this.cmbExperiment.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.cmbExperiment.Name = "cmbExperiment";
+            this.cmbExperiment.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.cmbExperiment.Size = new System.Drawing.Size(246, 27);
             this.cmbExperiment.TabIndex = 3;
             this.cmbExperiment.SelectedIndexChanged += new System.EventHandler(this.cmbExperiment_SelectedIndexChanged);
@@ -255,6 +257,7 @@
             this.cmbLab.Location = new System.Drawing.Point(389, 71);
             this.cmbLab.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.cmbLab.Name = "cmbLab";
+            this.cmbLab.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.cmbLab.Size = new System.Drawing.Size(246, 27);
             this.cmbLab.TabIndex = 3;
             this.cmbLab.SelectedIndexChanged += new System.EventHandler(this.cmbLab_SelectedIndexChanged);
@@ -266,6 +269,7 @@
             this.cmbExperimentNum.Location = new System.Drawing.Point(389, 137);
             this.cmbExperimentNum.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.cmbExperimentNum.Name = "cmbExperimentNum";
+            this.cmbExperimentNum.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.cmbExperimentNum.Size = new System.Drawing.Size(246, 27);
             this.cmbExperimentNum.TabIndex = 3;
             // 
@@ -276,6 +280,7 @@
             this.cmbEmployee.Location = new System.Drawing.Point(31, 38);
             this.cmbEmployee.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.cmbEmployee.Name = "cmbEmployee";
+            this.cmbEmployee.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.cmbEmployee.Size = new System.Drawing.Size(246, 27);
             this.cmbEmployee.TabIndex = 3;
             // 
