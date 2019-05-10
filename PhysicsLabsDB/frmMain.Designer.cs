@@ -32,7 +32,9 @@
 			this.tstrpMain = new System.Windows.Forms.ToolStrip();
 			this.tsbtnMain = new System.Windows.Forms.ToolStripButton();
 			this.tsbtnDevices = new System.Windows.Forms.ToolStripButton();
-			this.tsbtnCustody = new System.Windows.Forms.ToolStripButton();
+			this.tsbtnCustody = new System.Windows.Forms.ToolStripDropDownButton();
+			this.employeeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.custodyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.tstrpMain.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -71,12 +73,28 @@
 			// 
 			// tsbtnCustody
 			// 
+			this.tsbtnCustody.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.employeeToolStripMenuItem,
+            this.custodyToolStripMenuItem});
 			this.tsbtnCustody.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnCustody.Image")));
 			this.tsbtnCustody.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.tsbtnCustody.Name = "tsbtnCustody";
-			this.tsbtnCustody.Size = new System.Drawing.Size(48, 22);
+			this.tsbtnCustody.Size = new System.Drawing.Size(57, 22);
 			this.tsbtnCustody.Text = "العهد";
-			this.tsbtnCustody.Click += new System.EventHandler(this.tsbtnCustody_Click);
+			// 
+			// employeeToolStripMenuItem
+			// 
+			this.employeeToolStripMenuItem.Name = "employeeToolStripMenuItem";
+			this.employeeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.employeeToolStripMenuItem.Text = "أصحاب العهد";
+			this.employeeToolStripMenuItem.Click += new System.EventHandler(this.employeeToolStripMenuItem_Click);
+			// 
+			// custodyToolStripMenuItem
+			// 
+			this.custodyToolStripMenuItem.Name = "custodyToolStripMenuItem";
+			this.custodyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.custodyToolStripMenuItem.Text = "نقل العهدة";
+			this.custodyToolStripMenuItem.Click += new System.EventHandler(this.custodyToolStripMenuItem_Click);
 			// 
 			// frmMain
 			// 
@@ -108,6 +126,8 @@
         private System.Windows.Forms.ToolStrip tstrpMain;
         private System.Windows.Forms.ToolStripButton tsbtnDevices;
         private System.Windows.Forms.ToolStripButton tsbtnMain;
-		private System.Windows.Forms.ToolStripButton tsbtnCustody;
+		private System.Windows.Forms.ToolStripDropDownButton tsbtnCustody;
+		private System.Windows.Forms.ToolStripMenuItem employeeToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem custodyToolStripMenuItem;
 	}
 }

@@ -49,13 +49,16 @@ namespace PhysicsLabsDB
             frmSearch.Show();
         }
 
-		private void tsbtnCustody_Click(object sender, EventArgs e)
+		private void employeeToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			if (ActiveMdiChild != null)
-				ActiveMdiChild.Close();
 			Custody.frmCustody frmCustody = new Custody.frmCustody();
-			frmCustody.MdiParent = this;
-			frmCustody.Show();
+			frmCustody.ShowDialog();
+		}
+
+		private void custodyToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			Custody.frmTransferCustody frmTransferCustody = new Custody.frmTransferCustody();
+			frmTransferCustody.ShowDialog();
 		}
 	}
 }
