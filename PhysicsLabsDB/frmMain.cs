@@ -60,5 +60,23 @@ namespace PhysicsLabsDB
 			Custody.frmTransferCustody frmTransferCustody = new Custody.frmTransferCustody();
 			frmTransferCustody.ShowDialog();
 		}
-	}
+
+        private void tsbtnExperiments_Click(object sender, EventArgs e)
+        {
+            if (ActiveMdiChild != null)
+                ActiveMdiChild.Close();
+            Experiments.frmExperiment frmExperiment = new Experiments.frmExperiment();
+            frmExperiment.MdiParent = this;
+            frmExperiment.Show();
+        }
+
+        private void tsbtnAccounts_Click(object sender, EventArgs e)
+        {
+            if (ActiveMdiChild != null)
+                ActiveMdiChild.Close();
+            Accounts.frmAccounts frmAccounts = new Accounts.frmAccounts();
+            frmAccounts.MdiParent = this;
+            frmAccounts.Show();
+        }
+    }
 }
