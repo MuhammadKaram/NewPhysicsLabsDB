@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -414,6 +415,24 @@ namespace PhysicsLabsDB.Devices
             txtDescription.Text = grdVwSearch.Rows[rowIndex].Cells[7].Value.ToString();
             Zen.Barcode.Code128BarcodeDraw barcode = Zen.Barcode.BarcodeDrawFactory.Code128WithChecksum;
             picBarcode.Image = barcode.Draw(txtBarcode.Text, 50);
+        }
+
+        private void picBarcode_DoubleClick(object sender, EventArgs e)
+        {
+            PrintDialog pd = new PrintDialog();
+            PrintDocument doc = new PrintDocument();
+            doc.PrintPage += Doc_PrintPage;
+            pd.Document = doc;
+            if (pd.ShowDialog() == DialogResult.OK)
+                doc.Print();
+        }
+
+        private void Doc_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            Bitmap bm = new Bitmap(picBarcode.Width, picBarcode.Height);
+            picBarcode.DrawToBitmap(bm, new Rectangle(0, 0, picBarcode.Width, picBarcode.Height));
+            e.Graphics.DrawImage(bm, 0, 0);
+            bm.Dispose();
         }
     }
 }

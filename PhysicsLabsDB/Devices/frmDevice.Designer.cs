@@ -311,8 +311,10 @@
             this.picBarcode.Location = new System.Drawing.Point(802, 104);
             this.picBarcode.Name = "picBarcode";
             this.picBarcode.Size = new System.Drawing.Size(246, 60);
+            this.picBarcode.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picBarcode.TabIndex = 6;
             this.picBarcode.TabStop = false;
+            this.picBarcode.DoubleClick += new System.EventHandler(this.picBarcode_DoubleClick);
             // 
             // txtBarcode
             // 
