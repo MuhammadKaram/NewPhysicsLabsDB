@@ -36,6 +36,7 @@
             this.btnLogin = new System.Windows.Forms.Button();
             this.picLogo = new System.Windows.Forms.PictureBox();
             this.lblError = new System.Windows.Forms.Label();
+            this.btnStringConnection = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,7 +44,7 @@
             // 
             this.lblUserName.AutoSize = true;
             this.lblUserName.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold);
-            this.lblUserName.Location = new System.Drawing.Point(96, 183);
+            this.lblUserName.Location = new System.Drawing.Point(96, 198);
             this.lblUserName.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblUserName.Name = "lblUserName";
             this.lblUserName.Size = new System.Drawing.Size(122, 29);
@@ -56,7 +57,7 @@
             this.lblPassword.AutoSize = true;
             this.lblPassword.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold);
             this.lblPassword.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblPassword.Location = new System.Drawing.Point(101, 280);
+            this.lblPassword.Location = new System.Drawing.Point(101, 295);
             this.lblPassword.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(107, 29);
@@ -67,7 +68,7 @@
             // txtUserName
             // 
             this.txtUserName.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUserName.Location = new System.Drawing.Point(17, 229);
+            this.txtUserName.Location = new System.Drawing.Point(17, 244);
             this.txtUserName.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(273, 35);
@@ -77,7 +78,7 @@
             // txtPassword
             // 
             this.txtPassword.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(17, 326);
+            this.txtPassword.Location = new System.Drawing.Point(17, 341);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
@@ -87,7 +88,7 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(17, 389);
+            this.btnLogin.Location = new System.Drawing.Point(17, 404);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(273, 39);
             this.btnLogin.TabIndex = 3;
@@ -98,7 +99,7 @@
             // picLogo
             // 
             this.picLogo.Image = ((System.Drawing.Image)(resources.GetObject("picLogo.Image")));
-            this.picLogo.Location = new System.Drawing.Point(12, 23);
+            this.picLogo.Location = new System.Drawing.Point(12, 38);
             this.picLogo.Name = "picLogo";
             this.picLogo.Size = new System.Drawing.Size(283, 134);
             this.picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -109,12 +110,24 @@
             // 
             this.lblError.AutoSize = true;
             this.lblError.ForeColor = System.Drawing.Color.Red;
-            this.lblError.Location = new System.Drawing.Point(69, 452);
+            this.lblError.Location = new System.Drawing.Point(69, 467);
             this.lblError.Name = "lblError";
             this.lblError.Size = new System.Drawing.Size(162, 29);
             this.lblError.TabIndex = 4;
             this.lblError.Text = "بيانات الدخول خطأ";
             this.lblError.Visible = false;
+            // 
+            // btnStringConnection
+            // 
+            this.btnStringConnection.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnStringConnection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStringConnection.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStringConnection.Location = new System.Drawing.Point(0, 0);
+            this.btnStringConnection.Name = "btnStringConnection";
+            this.btnStringConnection.Size = new System.Drawing.Size(307, 26);
+            this.btnStringConnection.TabIndex = 5;
+            this.btnStringConnection.Text = "تغيير قاعدة البيانات";
+            this.btnStringConnection.UseVisualStyleBackColor = true;
             // 
             // frmLogin
             // 
@@ -122,7 +135,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(307, 504);
+            this.ClientSize = new System.Drawing.Size(307, 524);
+            this.Controls.Add(this.btnStringConnection);
             this.Controls.Add(this.lblError);
             this.Controls.Add(this.picLogo);
             this.Controls.Add(this.btnLogin);
@@ -134,8 +148,8 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(323, 543);
-            this.MinimumSize = new System.Drawing.Size(323, 543);
+            this.MaximumSize = new System.Drawing.Size(323, 563);
+            this.MinimumSize = new System.Drawing.Size(323, 563);
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "تسجيل الدخول";
@@ -154,6 +168,7 @@
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.PictureBox picLogo;
         private System.Windows.Forms.Label lblError;
+        private System.Windows.Forms.Button btnStringConnection;
     }
 }
 
