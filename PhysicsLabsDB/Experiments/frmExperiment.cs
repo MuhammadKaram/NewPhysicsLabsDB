@@ -145,15 +145,37 @@ namespace PhysicsLabsDB.Experiments
         {
             frmExperimentDevices frmExperimentDevices = new frmExperimentDevices(cmbLab.Text, lstExperiments.SelectedItem.ToString(), (int)lstExperimentsNum.SelectedItem);
             frmExperimentDevices.ShowDialog();
-            lstExperimentsDevices.DataSource = db.devices_tb.Where(u => u.lab_name == cmbLab.Text && u.exp_num == (int)lstExperimentsNum.SelectedItem).Select(u => u.device_name).ToList();
+            lstExperimentsDevices.DataSource = db.devices_tb.Where(u => u.lab_name == cmbLab.Text && u.exp_num == (int)lstExperimentsNum.SelectedItem).ToList();
+            lstExperimentsDevices.DisplayMember = "device_name";
+            lstExperimentsDevices.ValueMember = "ID";
         }
 
         private void lstExperimentsNum_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lstExperiments.DataSource != null)
             {
-                lstExperimentsDevices.DataSource = db.devices_tb.Where(u => u.lab_name == cmbLab.Text && u.exp_name == lstExperiments.SelectedItem.ToString() && u.exp_num == (int)lstExperimentsNum.SelectedItem).Select(u => u.device_name).ToList();
+                lstExperimentsDevices.DataSource = db.devices_tb.Where(u => u.lab_name == cmbLab.Text && u.exp_name == lstExperiments.SelectedItem.ToString() && u.exp_num == (int)lstExperimentsNum.SelectedItem).ToList();
+                lstExperimentsDevices.DisplayMember = "device_name";
+                lstExperimentsDevices.ValueMember = "ID";
             }
+        }
+
+        private string GetDeviceInfo(devices_tb device)
+        {
+            string info = string.Empty;
+            info += device.device_name + "\n";
+            info += device.device_barcode + "\n";
+            info += device.device_status + "\n";
+            info += device.respon + "\n";
+            info += device.lab_name + "\n";
+            info += device.exp_name + "\n";
+            info += device.exp_num;
+            return info;
+        }
+
+        private void lstExperimentsDevices_DoubleClick(object sender, EventArgs e)
+        {
+            MessageBox.Show(GetDeviceInfo((devices_tb)lstExperimentsDevices.SelectedItem), "بيانات الجهاز", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

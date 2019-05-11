@@ -109,6 +109,7 @@
             this.lstExperimentDevices.Size = new System.Drawing.Size(252, 400);
             this.lstExperimentDevices.TabIndex = 22;
             this.lstExperimentDevices.ValueMember = "ID";
+            this.lstExperimentDevices.DoubleClick += new System.EventHandler(this.lstExperimentDevices_DoubleClick);
             // 
             // lstAvailableDevices
             // 
@@ -120,6 +121,7 @@
             this.lstAvailableDevices.Size = new System.Drawing.Size(252, 400);
             this.lstAvailableDevices.TabIndex = 20;
             this.lstAvailableDevices.ValueMember = "ID";
+            this.lstAvailableDevices.DoubleClick += new System.EventHandler(this.lstAvailableDevices_DoubleClick);
             // 
             // frmExperimentDevices
             // 

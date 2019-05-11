@@ -137,6 +137,7 @@
             // 
             // lstExperimentsDevices
             // 
+            this.lstExperimentsDevices.DisplayMember = "device_name";
             this.lstExperimentsDevices.FormattingEnabled = true;
             this.lstExperimentsDevices.ItemHeight = 22;
             this.lstExperimentsDevices.Location = new System.Drawing.Point(74, 140);
@@ -144,6 +145,8 @@
             this.lstExperimentsDevices.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lstExperimentsDevices.Size = new System.Drawing.Size(217, 268);
             this.lstExperimentsDevices.TabIndex = 18;
+            this.lstExperimentsDevices.ValueMember = "ID";
+            this.lstExperimentsDevices.DoubleClick += new System.EventHandler(this.lstExperimentsDevices_DoubleClick);
             // 
             // lstExperimentsNum
             // 

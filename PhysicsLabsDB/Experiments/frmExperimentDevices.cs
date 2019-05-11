@@ -86,5 +86,28 @@ namespace PhysicsLabsDB.Experiments
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        private string GetDeviceInfo(devices_tb device)
+        {
+            string info = string.Empty;
+            info += device.device_name + "\n";
+            info += device.device_barcode + "\n";
+            info += device.device_status + "\n";
+            info += device.respon + "\n";
+            info += device.lab_name + "\n";
+            info += device.exp_name + "\n";
+            info += device.exp_num;
+            return info;
+        }
+
+        private void lstExperimentDevices_DoubleClick(object sender, EventArgs e)
+        {
+            MessageBox.Show(GetDeviceInfo((devices_tb)lstExperimentDevices.SelectedItem), "بيانات الجهاز", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void lstAvailableDevices_DoubleClick(object sender, EventArgs e)
+        {
+            MessageBox.Show(GetDeviceInfo((devices_tb)lstAvailableDevices.SelectedItem), "بيانات الجهاز", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }
