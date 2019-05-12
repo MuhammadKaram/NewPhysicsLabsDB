@@ -18,8 +18,6 @@ namespace PhysicsLabsDB
 
         physics_dbEntities db = new physics_dbEntities();
 
-        public static account loggedUser = new account();
-
         public frmLogin()
         {
             InitializeComponent();
@@ -45,7 +43,7 @@ namespace PhysicsLabsDB
 
         private void Login()
         {
-            loggedUser = db.accounts.FirstOrDefault(u => u.UserName == txtUserName.Text && u.UserPassword == txtPassword.Text);
+            account loggedUser = db.accounts.FirstOrDefault(u => u.UserName == txtUserName.Text && u.UserPassword == txtPassword.Text);
             if (loggedUser == null)
             {
                 lblError.Text = "بيانات الدخول خطأ";
@@ -55,6 +53,7 @@ namespace PhysicsLabsDB
             }
             else
             {
+                LoggedUser.FillLoggedUser(loggedUser);
                 frmMain frmMain = new frmMain();
                 frmMain.Show();
                 this.Hide();

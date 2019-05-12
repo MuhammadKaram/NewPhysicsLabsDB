@@ -189,7 +189,7 @@ namespace PhysicsLabsDB.Accounts
                             return;
                         }
                         var account = db.accounts.FirstOrDefault(u => u.UserName == selectedUserToEdit);
-                        
+
                         if (account.account_types.AccountType == "admin")
                         {
                             var adminAccountsCount = db.accounts.Where(u => u.AccountType == account.AccountType).Count();
@@ -230,7 +230,7 @@ namespace PhysicsLabsDB.Accounts
             try
             {
                 var account = db.accounts.FirstOrDefault(u => u.UserName == txtuserName.Text);
-                if(account.account_types.AccountType == "admin")
+                if (account.account_types.AccountType == "admin")
                 {
                     var adminAccountsCount = db.accounts.Where(u => u.AccountType == account.AccountType).Count();
                     if (adminAccountsCount == 1)
@@ -312,9 +312,12 @@ namespace PhysicsLabsDB.Accounts
             selectedUserToEdit = txtuserName.Text;
             cmbAccountType.Text = grdVwUsers.Rows[rowIndex].Cells[1].Value.ToString();
             cmbEmployee.Text = grdVwUsers.Rows[rowIndex].Cells[2].Value.ToString();
-            txtPassword.Text = txtConfirmPassword.Text 
-                = db.accounts.Where(u => u.UserName == txtuserName.Text)
-                .Select(u => u.UserPassword).ToList()[0];
+            txtPassword.Text = txtConfirmPassword.Text
+                = db.accounts.FirstOrDefault(u => u.UserName == txtuserName.Text).UserPassword;
+
+            delToolStripButton.Enabled = cmbAccountType.Enabled = LoggedUser.UserName == txtuserName.Text ? false : true;
+            //= db.accounts.Where(u => u.UserName == txtuserName.Text)
+            //.Select(u => u.UserPassword).ToList()[0];
         }
 
 
