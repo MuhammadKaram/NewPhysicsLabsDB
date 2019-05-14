@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Linq;
@@ -128,7 +128,7 @@ namespace PhysicsLabsDB.Devices
             //cmbExperiment.DataSource = db.exps.Select(u => u.exp_name).ToList();
             //cmbExperimentNum.DataSource = db.exps.Select(u => u.exp_num);
             cmbLab.DataSource = db.labs.Select(u => u.lab_name).ToList();
-            cmbStatus.DataSource = db.Device_Status.Select(u => u.Status).ToList();
+            cmbStatus.DataSource = db.device_status.Select(u => u.Status).ToList();
             if (currentDevice == null)
             {
                 ClearControls();
@@ -226,23 +226,27 @@ namespace PhysicsLabsDB.Devices
         {
             //todo
             //..
-            try
+            DialogResult dialogResult = MessageBox.Show("هل تريد حذف الجهاز", "رسالة تأكيد", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
             {
-                var selectedItemBarcode = Convert.ToDecimal(txtBarcode.Text);
-                var device = db.devices_tb.FirstOrDefault(u => u.device_barcode == selectedItemBarcode);
-                db.devices_tb.Remove(device);
-                db.SaveChanges();
+                try
+                {
+                    var selectedItemBarcode = Convert.ToDecimal(txtBarcode.Text);
+                    var device = db.devices_tb.FirstOrDefault(u => u.device_barcode == selectedItemBarcode);
+                    db.devices_tb.Remove(device);
+                    db.SaveChanges();
 
-                MessageBox.Show("تم الحذف", "تم", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("تم الحذف", "تم", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                ClearControls();
-                ControlStatus(false);
-                ToolStripButtonStatus(Status.Reset);
-                Search();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString(), "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ClearControls();
+                    ControlStatus(false);
+                    ToolStripButtonStatus(Status.Reset);
+                    Search();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString(), "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -264,8 +268,8 @@ namespace PhysicsLabsDB.Devices
             if (rdBarcode.Checked == true) { barcode = txtSearch.Text.Trim(); } else { barcode = DBNull.Value; }
 
             // must add reference to System.Configuration  from assemblies
-            SqlConnection connection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringSQL"].ConnectionString);
-            SqlDataAdapter data_adabter = new SqlDataAdapter();
+            MySqlConnection connection = new MySqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringSQL"].ConnectionString);
+            MySqlDataAdapter data_adabter = new MySqlDataAdapter();
             DataTable result = new DataTable();
 
             string query = @"select device_name,
@@ -277,11 +281,11 @@ namespace PhysicsLabsDB.Devices
             	   respon,
             	   description
             from devices_tb 
-            	   where (@device is null or device_name like @device + '%')
-            	   and (@barcode is null or device_barcode like @barcode + '%');";
+            	   where (@device is null or device_name like CONCAT(@device, '%'))
+            	   and (@barcode is null or device_barcode like CONCAT(@barcode, '%'));";
 
             connection.Open();
-            data_adabter = new SqlDataAdapter(query, connection);
+            data_adabter = new MySqlDataAdapter(query, connection);
             data_adabter.SelectCommand.Parameters.AddWithValue("@device", device);
             data_adabter.SelectCommand.Parameters.AddWithValue("@barcode", barcode);
             data_adabter.Fill(result);
@@ -433,6 +437,11 @@ namespace PhysicsLabsDB.Devices
             picBarcode.DrawToBitmap(bm, new Rectangle(0, 0, picBarcode.Width, picBarcode.Height));
             e.Graphics.DrawImage(bm, 0, 0);
             bm.Dispose();
+        }
+
+        private void rdBarcode_CheckedChanged(object sender, EventArgs e)
+        {
+            Search();
         }
     }
 }

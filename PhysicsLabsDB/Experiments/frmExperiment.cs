@@ -35,29 +35,33 @@ namespace PhysicsLabsDB.Experiments
 
         private void btnDeleteExperiment_Click(object sender, EventArgs e)
         {
-            try
+            DialogResult dialogResult = MessageBox.Show("هل تريد حذف التجربة", "رسالة تأكيد", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
             {
-                var selectedExperiment = lstExperiments.SelectedItem.ToString();
-                var experiment = db.exps.Where(u => u.exp_name == selectedExperiment);
-                foreach (var exp in experiment)
+                try
                 {
-                    db.exps.Remove(exp);
-                }
+                    var selectedExperiment = lstExperiments.SelectedItem.ToString();
+                    var experiment = db.exps.Where(u => u.exp_name == selectedExperiment);
+                    foreach (var exp in experiment)
+                    {
+                        db.exps.Remove(exp);
+                    }
 
-                var devices = db.devices_tb.Where(u => u.exp_name == selectedExperiment);
-                foreach (var device in devices)
+                    var devices = db.devices_tb.Where(u => u.exp_name == selectedExperiment);
+                    foreach (var device in devices)
+                    {
+                        device.exp_name = "بدون تجربة";
+                        device.exp_num = 0;
+                    }
+
+                    db.SaveChanges();
+                    lstExperiments.DataSource = db.exps.Where(u => u.lab_name == cmbLab.Text).Select(u => u.exp_name).Distinct().ToList();
+                    GetExperimentsNum();
+                }
+                catch (Exception ex)
                 {
-                    device.exp_name = "بدون تجربة";
-                    device.exp_num = 0;
+                    MessageBox.Show(ex.ToString());
                 }
-
-                db.SaveChanges();
-                lstExperiments.DataSource = db.exps.Where(u => u.lab_name == cmbLab.Text).Select(u => u.exp_name).Distinct().ToList();
-                GetExperimentsNum();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
             }
         }
 
@@ -94,30 +98,34 @@ namespace PhysicsLabsDB.Experiments
 
         private void btnDeleteExpCopy_Click(object sender, EventArgs e)
         {
-            try
+            DialogResult dialogResult = MessageBox.Show("هل تريد حذف نسخة التجربة", "رسالة تأكيد", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
             {
-                var selectedExperiment = lstExperiments.SelectedItem.ToString();
-                var selectedExperimentNum = (int)lstExperimentsNum.SelectedItem;
-                var experiment = db.exps.Where(u => u.exp_name == selectedExperiment && u.exp_num == selectedExperimentNum);
-                foreach (var exp in experiment)
+                try
                 {
-                    db.exps.Remove(exp);
-                }
+                    var selectedExperiment = lstExperiments.SelectedItem.ToString();
+                    var selectedExperimentNum = (int)lstExperimentsNum.SelectedItem;
+                    var experiment = db.exps.Where(u => u.exp_name == selectedExperiment && u.exp_num == selectedExperimentNum);
+                    foreach (var exp in experiment)
+                    {
+                        db.exps.Remove(exp);
+                    }
 
-                var devices = db.devices_tb.Where(u => u.exp_name == selectedExperiment && u.exp_num == selectedExperimentNum);
-                foreach (var device in devices)
+                    var devices = db.devices_tb.Where(u => u.exp_name == selectedExperiment && u.exp_num == selectedExperimentNum);
+                    foreach (var device in devices)
+                    {
+                        device.exp_name = "بدون تجربة";
+                        device.exp_num = 0;
+                    }
+
+                    db.SaveChanges();
+                    lstExperimentsNum.DataSource = db.exps.Where(u => u.exp_name == lstExperiments.SelectedItem.ToString()).Select(u => u.exp_num).ToList();
+                    GetExperimentsNum();
+                }
+                catch (Exception ex)
                 {
-                    device.exp_name = "بدون تجربة";
-                    device.exp_num = 0;
+                    MessageBox.Show(ex.ToString());
                 }
-
-                db.SaveChanges();
-                lstExperimentsNum.DataSource = db.exps.Where(u => u.exp_name == lstExperiments.SelectedItem.ToString()).Select(u => u.exp_num).ToList();
-                GetExperimentsNum();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
             }
         }
 

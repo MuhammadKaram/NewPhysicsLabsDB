@@ -12,6 +12,11 @@ create table Accounts(
 	AccountType int not null
 );
 
+create table Device_Status(
+	ID int primary key AUTO_INCREMENT,
+    Status varchar(100) not null
+);
+
 ALTER TABLE `physics_db`.`accounts` 
 ADD INDEX `Accounts_AccountType_ID_idx` (`AccountType` ASC),
 ADD INDEX `Accounts_respon_ID_idx` (`Respon` ASC);

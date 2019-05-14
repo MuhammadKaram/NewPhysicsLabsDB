@@ -4,43 +4,43 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="physics_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="physics_dbModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="account_types">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="AccountType" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="AccountType" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="accounts">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserName" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="UserPassword" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="UserPassword" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="Respon" Type="int" Nullable="false" />
           <Property Name="AccountType" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="Device_Status">
+        <EntityType Name="device_status">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="devices_tb">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="device_name" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="device_barcode" Type="decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="lab_name" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="device_status" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="exp_name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="device_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="device_barcode" Type="decimal" Precision="50" Scale="0" Nullable="false" />
+          <Property Name="lab_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="device_status" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="exp_name" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="exp_num" Type="int" Nullable="false" />
-          <Property Name="respon" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="description" Type="nvarchar" MaxLength="250" />
+          <Property Name="respon" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="250" />
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="exp">
@@ -48,25 +48,25 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="exp_name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="exp_name" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="exp_num" Type="int" Nullable="false" />
-          <Property Name="lab_name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="lab_name" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="labs">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="lab_name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="lab_name" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="respon">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
-        <Association Name="accounts$Accounts_AccountType_ID">
+        <Association Name="Accounts_AccountType_ID">
           <End Role="account_types" Type="Self.account_types" Multiplicity="1" />
           <End Role="accounts" Type="Self.accounts" Multiplicity="*" />
           <ReferentialConstraint>
@@ -78,7 +78,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="accounts$Accounts_respon_ID">
+        <Association Name="Accounts_respon_ID">
           <End Role="respon" Type="Self.respon" Multiplicity="1" />
           <End Role="accounts" Type="Self.accounts" Multiplicity="*" />
           <ReferentialConstraint>
@@ -91,18 +91,18 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="physics_dbModelStoreContainer">
-          <EntitySet Name="account_types" EntityType="Self.account_types" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="accounts" EntityType="Self.accounts" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Device_Status" EntityType="Self.Device_Status" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="devices_tb" EntityType="Self.devices_tb" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="exp" EntityType="Self.exp" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="labs" EntityType="Self.labs" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="respon" EntityType="Self.respon" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="accounts$Accounts_AccountType_ID" Association="Self.accounts$Accounts_AccountType_ID">
+          <EntitySet Name="account_types" EntityType="Self.account_types" Schema="physics_db" store:Type="Tables" />
+          <EntitySet Name="accounts" EntityType="Self.accounts" Schema="physics_db" store:Type="Tables" />
+          <EntitySet Name="device_status" EntityType="Self.device_status" Schema="physics_db" store:Type="Tables" />
+          <EntitySet Name="devices_tb" EntityType="Self.devices_tb" Schema="physics_db" store:Type="Tables" />
+          <EntitySet Name="exp" EntityType="Self.exp" Schema="physics_db" store:Type="Tables" />
+          <EntitySet Name="labs" EntityType="Self.labs" Schema="physics_db" store:Type="Tables" />
+          <EntitySet Name="respon" EntityType="Self.respon" Schema="physics_db" store:Type="Tables" />
+          <AssociationSet Name="Accounts_AccountType_ID" Association="Self.Accounts_AccountType_ID">
             <End Role="account_types" EntitySet="account_types" />
             <End Role="accounts" EntitySet="accounts" />
           </AssociationSet>
-          <AssociationSet Name="accounts$Accounts_respon_ID" Association="Self.accounts$Accounts_respon_ID">
+          <AssociationSet Name="Accounts_respon_ID" Association="Self.Accounts_respon_ID">
             <End Role="respon" EntitySet="respon" />
             <End Role="accounts" EntitySet="accounts" />
           </AssociationSet>
@@ -117,40 +117,40 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="AccountType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="accounts" Relationship="Self.accounts_Accounts_AccountType_ID" FromRole="account_types" ToRole="accounts" />
+          <Property Name="AccountType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="accounts" Relationship="Self.Accounts_AccountType_ID" FromRole="account_types" ToRole="accounts" />
         </EntityType>
         <EntityType Name="account">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="UserPassword" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserPassword" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Respon" Type="Int32" Nullable="false" />
           <Property Name="AccountType" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="account_types" Relationship="Self.accounts_Accounts_AccountType_ID" FromRole="accounts" ToRole="account_types" />
-          <NavigationProperty Name="respon1" Relationship="Self.accounts_Accounts_respon_ID" FromRole="accounts" ToRole="respon" />
+          <NavigationProperty Name="account_types" Relationship="Self.Accounts_AccountType_ID" FromRole="accounts" ToRole="account_types" />
+          <NavigationProperty Name="respon1" Relationship="Self.Accounts_respon_ID" FromRole="accounts" ToRole="respon" />
         </EntityType>
-        <EntityType Name="Device_Status">
+        <EntityType Name="device_status">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="devices_tb">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="device_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="device_barcode" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="lab_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="device_status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="exp_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="device_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="device_barcode" Type="Decimal" Nullable="false" />
+          <Property Name="lab_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="device_status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="exp_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="exp_num" Type="Int32" Nullable="false" />
-          <Property Name="respon" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="respon" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityType Name="exp">
@@ -158,26 +158,26 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="exp_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="exp_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="exp_num" Type="Int32" Nullable="false" />
-          <Property Name="lab_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="lab_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="lab">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="lab_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="lab_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="respon">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="accounts" Relationship="Self.accounts_Accounts_respon_ID" FromRole="respon" ToRole="accounts" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="accounts" Relationship="Self.Accounts_respon_ID" FromRole="respon" ToRole="accounts" />
         </EntityType>
-        <Association Name="accounts_Accounts_AccountType_ID">
+        <Association Name="Accounts_AccountType_ID">
           <End Role="account_types" Type="Self.account_types" Multiplicity="1" />
           <End Role="accounts" Type="Self.account" Multiplicity="*" />
           <ReferentialConstraint>
@@ -189,7 +189,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="accounts_Accounts_respon_ID">
+        <Association Name="Accounts_respon_ID">
           <End Role="respon" Type="Self.respon" Multiplicity="1" />
           <End Role="accounts" Type="Self.account" Multiplicity="*" />
           <ReferentialConstraint>
@@ -204,16 +204,16 @@
         <EntityContainer Name="physics_dbEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="account_types" EntityType="Self.account_types" />
           <EntitySet Name="accounts" EntityType="Self.account" />
-          <EntitySet Name="Device_Status" EntityType="Self.Device_Status" />
+          <EntitySet Name="device_status" EntityType="Self.device_status" />
           <EntitySet Name="devices_tb" EntityType="Self.devices_tb" />
           <EntitySet Name="exps" EntityType="Self.exp" />
           <EntitySet Name="labs" EntityType="Self.lab" />
           <EntitySet Name="respons" EntityType="Self.respon" />
-          <AssociationSet Name="accounts_Accounts_AccountType_ID" Association="Self.accounts_Accounts_AccountType_ID">
+          <AssociationSet Name="Accounts_AccountType_ID" Association="Self.Accounts_AccountType_ID">
             <End Role="account_types" EntitySet="account_types" />
             <End Role="accounts" EntitySet="accounts" />
           </AssociationSet>
-          <AssociationSet Name="accounts_Accounts_respon_ID" Association="Self.accounts_Accounts_respon_ID">
+          <AssociationSet Name="Accounts_respon_ID" Association="Self.Accounts_respon_ID">
             <End Role="respon" EntitySet="respons" />
             <End Role="accounts" EntitySet="accounts" />
           </AssociationSet>
@@ -243,9 +243,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Device_Status">
-            <EntityTypeMapping TypeName="physics_dbModel.Device_Status">
-              <MappingFragment StoreEntitySet="Device_Status">
+          <EntitySetMapping Name="device_status">
+            <EntityTypeMapping TypeName="physics_dbModel.device_status">
+              <MappingFragment StoreEntitySet="device_status">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
               </MappingFragment>

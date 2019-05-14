@@ -33,18 +33,35 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.3.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.3.1\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Google.Protobuf, Version=3.6.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.6.1\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.16.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.16\lib\net452\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.EntityFramework, Version=8.0.16.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.EntityFramework.8.0.16\lib\net452\MySql.Data.EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -92,7 +109,7 @@
     <Compile Include="devices_tb.cs">
       <DependentUpon>physics_db.tt</DependentUpon>
     </Compile>
-    <Compile Include="Device_Status.cs">
+    <Compile Include="device_status.cs">
       <DependentUpon>physics_db.tt</DependentUpon>
     </Compile>
     <Compile Include="exp.cs">
@@ -104,17 +121,29 @@
     <Compile Include="Experiments\frmAddExperiments.Designer.cs">
       <DependentUpon>frmAddExperiments.cs</DependentUpon>
     </Compile>
+    <Compile Include="Experiments\frmExperiment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Experiments\frmExperiment.Designer.cs">
+      <DependentUpon>frmExperiment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Experiments\frmExperimentDevices.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Experiments\frmExperimentDevices.Designer.cs">
       <DependentUpon>frmExperimentDevices.cs</DependentUpon>
     </Compile>
-    <Compile Include="Experiments\frmExperiment.cs">
+    <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Experiments\frmExperiment.Designer.cs">
-      <DependentUpon>frmExperiment.cs</DependentUpon>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="lab.cs">
       <DependentUpon>physics_db.tt</DependentUpon>
@@ -135,6 +164,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>physics_db.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="respon.cs">
       <DependentUpon>physics_db.tt</DependentUpon>
     </Compile>
@@ -144,20 +175,6 @@
     <Compile Include="Search\frmSearch.Designer.cs">
       <DependentUpon>frmSearch.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmLogin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmLogin.Designer.cs">
-      <DependentUpon>frmLogin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmMain.Designer.cs">
-      <DependentUpon>frmMain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Accounts\frmAccounts.resx">
       <DependentUpon>frmAccounts.cs</DependentUpon>
     </EmbeddedResource>
@@ -173,14 +190,11 @@
     <EmbeddedResource Include="Experiments\frmAddExperiments.resx">
       <DependentUpon>frmAddExperiments.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Experiments\frmExperimentDevices.resx">
-      <DependentUpon>frmExperimentDevices.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Experiments\frmExperiment.resx">
       <DependentUpon>frmExperiment.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Search\frmSearch.resx">
-      <DependentUpon>frmSearch.cs</DependentUpon>
+    <EmbeddedResource Include="Experiments\frmExperimentDevices.resx">
+      <DependentUpon>frmExperimentDevices.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
@@ -198,6 +212,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Search\frmSearch.resx">
+      <DependentUpon>frmSearch.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <EntityDeploy Include="physics_db.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -225,6 +242,9 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Reports\" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="physics_db.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>physics_db.edmx</DependentUpon>
@@ -235,8 +255,6 @@
       <DependentUpon>physics_db.edmx</DependentUpon>
       <LastGenOutput>physics_db.cs</LastGenOutput>
     </Content>
-    <None Include="Resources\iconfinder_error_1646012.png" />
-    <None Include="Resources\iconfinder_sign-add_299068.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

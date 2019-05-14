@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -22,7 +22,7 @@ namespace PhysicsLabsDB.Search
 
         private void frmSearch_Load(object sender, EventArgs e)
         {
-            cmbStatus.DataSource = db.Device_Status.Select(u => u.Status).ToList();
+            cmbStatus.DataSource = db.device_status.Select(u => u.Status).ToList();
             cmbLab.DataSource = db.labs.Select(u => u.lab_name).ToList();
             //grdVwSearch.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             grdVwSearch.AutoGenerateColumns = false;
@@ -65,8 +65,8 @@ namespace PhysicsLabsDB.Search
             if (chkStatus.Checked == true) { status = cmbStatus.SelectedItem; } else { status = DBNull.Value; }
 
             // must add reference to System.Configuration  from assemblies
-            SqlConnection connection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringSQL"].ConnectionString);
-            SqlDataAdapter data_adabter = new SqlDataAdapter();
+            MySqlConnection connection = new MySqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringSQL"].ConnectionString);
+            MySqlDataAdapter data_adabter = new MySqlDataAdapter();
             DataTable result = new DataTable();
 
             string query = @"select device_name,
@@ -78,15 +78,15 @@ namespace PhysicsLabsDB.Search
             	   respon,
             	   description
             from devices_tb 
-            	   where (@device is null or device_name like @device + '%')
-            	   and (@experiment is null or exp_name like @experiment + '%')
-            	   and (@employee is null or respon like @employee + '%')
-            	   and (@lab is null or lab_name like @lab + '%')
-            	   and (@status is null or device_status like @status + '%')
-            	   and (@barcode is null or device_barcode like @barcode + '%');";
+            	   where (@device is null or device_name like CONCAT(@device, '%'))
+            	   and (@experiment is null or exp_name like CONCAT(@experiment, '%'))
+            	   and (@employee is null or respon like CONCAT(@employee, '%'))
+            	   and (@lab is null or lab_name like CONCAT(@lab, '%'))
+            	   and (@status is null or device_status like CONCAT(@status, '%'))
+            	   and (@barcode is null or device_barcode like CONCAT(@barcode, '%'));";
 
             connection.Open();
-            data_adabter = new SqlDataAdapter(query, connection);
+            data_adabter = new MySqlDataAdapter(query, connection);
             data_adabter.SelectCommand.Parameters.AddWithValue("@device", device);
             data_adabter.SelectCommand.Parameters.AddWithValue("@experiment", experiment);
             data_adabter.SelectCommand.Parameters.AddWithValue("@employee", employee);

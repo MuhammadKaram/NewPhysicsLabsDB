@@ -12,7 +12,7 @@ namespace PhysicsLabsDB
     using System;
     using System.Collections.Generic;
     
-    public partial class Device_Status
+    public partial class device_status
     {
         public int ID { get; set; }
         public string Status { get; set; }

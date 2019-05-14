@@ -140,12 +140,13 @@
             this.Controls.Add(this.lstAvailableDevices);
             this.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmExperimentDevices";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmLabs";
+            this.Text = "مكونات التجربة";
             this.Load += new System.EventHandler(this.frmExperimentDevices_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

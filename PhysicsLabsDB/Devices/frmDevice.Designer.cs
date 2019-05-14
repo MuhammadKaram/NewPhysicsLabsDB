@@ -440,6 +440,7 @@
             this.rdBarcode.TabIndex = 21;
             this.rdBarcode.Text = "الباركود";
             this.rdBarcode.UseVisualStyleBackColor = true;
+            this.rdBarcode.CheckedChanged += new System.EventHandler(this.rdBarcode_CheckedChanged);
             // 
             // rdDevice
             // 
@@ -453,6 +454,7 @@
             this.rdDevice.TabStop = true;
             this.rdDevice.Text = "اسم الجهاز";
             this.rdDevice.UseVisualStyleBackColor = true;
+            this.rdDevice.CheckedChanged += new System.EventHandler(this.rdBarcode_CheckedChanged);
             // 
             // frmDevice
             // 

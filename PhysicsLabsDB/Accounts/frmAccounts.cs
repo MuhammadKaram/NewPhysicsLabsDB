@@ -227,31 +227,35 @@ namespace PhysicsLabsDB.Accounts
             //todo
             //..
             //if()
-            try
+            DialogResult dialogResult = MessageBox.Show("هل تريد حذف الحساب", "رسالة تأكيد", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
             {
-                var account = db.accounts.FirstOrDefault(u => u.UserName == txtuserName.Text);
-                if (account.account_types.AccountType == "admin")
+                try
                 {
-                    var adminAccountsCount = db.accounts.Where(u => u.AccountType == account.AccountType).Count();
-                    if (adminAccountsCount == 1)
+                    var account = db.accounts.FirstOrDefault(u => u.UserName == txtuserName.Text);
+                    if (account.account_types.AccountType == "admin")
                     {
-                        MessageBox.Show("لا يمكن حذف هذا الحساب", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
+                        var adminAccountsCount = db.accounts.Where(u => u.AccountType == account.AccountType).Count();
+                        if (adminAccountsCount == 1)
+                        {
+                            MessageBox.Show("لا يمكن حذف هذا الحساب", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                     }
+                    db.accounts.Remove(account);
+                    db.SaveChanges();
+
+                    MessageBox.Show("تم الحذف", "تم", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    ClearControls();
+                    ControlStatus(false);
+                    ToolStripButtonStatus(Status.Reset);
+                    Search();
                 }
-                db.accounts.Remove(account);
-                db.SaveChanges();
-
-                MessageBox.Show("تم الحذف", "تم", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                ClearControls();
-                ControlStatus(false);
-                ToolStripButtonStatus(Status.Reset);
-                Search();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString(), "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString(), "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -267,29 +271,10 @@ namespace PhysicsLabsDB.Accounts
                 AccountType = u.account_types.AccountType
             }).ToList();
             grdVwUsers.DataSource = result;
-            //object username;
-
-            //// must add reference to System.Configuration  from assemblies
-            //SqlConnection connection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringSQL"].ConnectionString);
-            //SqlDataAdapter data_adabter = new SqlDataAdapter();
-            //DataTable result = new DataTable();
-
-            //string query = @"select UserName,
-            //         	   Respon,
-            //         	   AccountType
-            //         from account 
-            //         	   where (@username is null or UserName like @username + '%');";
-
-            //connection.Open();
-            //data_adabter = new SqlDataAdapter(query, connection);
-            //data_adabter.SelectCommand.Parameters.AddWithValue("@username", username);
-            //data_adabter.Fill(result);
-            //connection.Close();
 
             grdVwUsers.Columns["colUserName"].DataPropertyName = "UserName";
             grdVwUsers.Columns["colAccountType"].DataPropertyName = "AccountType";
             grdVwUsers.Columns["colRespon"].DataPropertyName = "Respon";
-            //grdVwUsers.DataSource = result;
         }
 
 
@@ -316,8 +301,6 @@ namespace PhysicsLabsDB.Accounts
                 = db.accounts.FirstOrDefault(u => u.UserName == txtuserName.Text).UserPassword;
 
             delToolStripButton.Enabled = cmbAccountType.Enabled = LoggedUser.UserName == txtuserName.Text ? false : true;
-            //= db.accounts.Where(u => u.UserName == txtuserName.Text)
-            //.Select(u => u.UserPassword).ToList()[0];
         }
 
 

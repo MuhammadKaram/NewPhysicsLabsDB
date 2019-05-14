@@ -13,9 +13,6 @@ namespace PhysicsLabsDB
 {
     public partial class frmLogin : Form
     {
-        //// must add reference to System.Configuration  from assemblies
-        //SqlConnection connection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
-
         physics_dbEntities db = new physics_dbEntities();
 
         public frmLogin()
@@ -27,19 +24,6 @@ namespace PhysicsLabsDB
         {
             Login();
         }
-
-        //protected override void OnKeyDown(KeyEventArgs e)
-        //{
-        //    if (e.KeyCode == Keys.Enter)
-        //    {
-        //        SelectNextControl(ActiveControl, true, true, true, true);
-        //        if(ActiveControl == btnLogin)
-        //        {
-        //            Login();
-        //        }
-        //        e.Handled = true;
-        //    }
-        //}
 
         private void Login()
         {
