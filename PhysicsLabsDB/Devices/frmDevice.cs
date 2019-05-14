@@ -317,11 +317,11 @@ namespace PhysicsLabsDB.Devices
 
             string myBarCode = string.Empty;
             // Get the first two characters from debended items and get its ASCII code using "Convert.ToInt32"
-            myBarCode = myBarCode + maxBarcodeDeviceID 
+            myBarCode = myBarCode //+ maxBarcodeDeviceID 
                 + Convert.ToInt32(cmbLab.Text[0]) + Convert.ToInt32(cmbLab.Text[1])
                 + Convert.ToInt32(cmbExperiment.Text[0]) + Convert.ToInt32(cmbExperiment.Text[1])
-                + Convert.ToInt32(txtDeviceName.Text[0]) + Convert.ToInt32(txtDeviceName.Text[1]);
-                //+maxBarcodeDeviceID
+                + Convert.ToInt32(txtDeviceName.Text[0]) + Convert.ToInt32(txtDeviceName.Text[1])
+                + maxBarcodeDeviceID;
 
             myBarCode = myBarCode.Substring(myBarCode.Length - 13);
 
