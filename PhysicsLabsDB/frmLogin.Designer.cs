@@ -128,6 +128,7 @@
             this.btnStringConnection.TabIndex = 5;
             this.btnStringConnection.Text = "تغيير قاعدة البيانات";
             this.btnStringConnection.UseVisualStyleBackColor = true;
+            this.btnStringConnection.Click += new System.EventHandler(this.btnStringConnection_Click);
             // 
             // frmLogin
             // 

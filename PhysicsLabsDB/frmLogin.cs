@@ -13,8 +13,6 @@ namespace PhysicsLabsDB
 {
     public partial class frmLogin : Form
     {
-        physics_dbEntities db = new physics_dbEntities();
-
         public frmLogin()
         {
             InitializeComponent();
@@ -27,7 +25,19 @@ namespace PhysicsLabsDB
 
         private void Login()
         {
-            account loggedUser = db.accounts.FirstOrDefault(u => u.UserName == txtUserName.Text && u.UserPassword == txtPassword.Text);
+            physics_dbEntities db = new physics_dbEntities();
+            account loggedUser = new account();
+
+            try
+            {
+                loggedUser = db.accounts.FirstOrDefault(u => u.UserName == txtUserName.Text && u.UserPassword == txtPassword.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("خطأ أثناء الاتصال بقاعدة البيانات .. من فضلك تأكد من بيانات الاتصال وحالة الخادم", "خطأ فى الاتصال", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            
             if (loggedUser == null)
             {
                 lblError.Text = "بيانات الدخول خطأ";
@@ -41,8 +51,16 @@ namespace PhysicsLabsDB
                 frmMain frmMain = new frmMain();
                 frmMain.Show();
                 this.Hide();
-                lblError.Visible = true;
+                lblError.Visible = false;
             }
+        }
+
+        private void btnStringConnection_Click(object sender, EventArgs e)
+        {
+            ConnectionString.frmConnectionString frmConnectionString = new ConnectionString.frmConnectionString();
+            frmConnectionString.ShowDialog();
+            //this.Hide();
+            //txtUserName.Focus();
         }
     }
 }
