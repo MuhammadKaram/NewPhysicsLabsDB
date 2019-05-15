@@ -131,7 +131,7 @@ namespace PhysicsLabsDB.Experiments
 
         private void GetExperimentsNum()
         {
-            var experimentsNumbers = db.exps.Where(u => u.exp_name == lstExperiments.SelectedItem.ToString()).Count();
+            var experimentsNumbers = db.exps.Where(u => u.exp_name == lstExperiments.SelectedItem.ToString() && u.lab_name == cmbLab.Text).Count();
             txtExperimetNum.Text = experimentsNumbers.ToString();
         }
 
