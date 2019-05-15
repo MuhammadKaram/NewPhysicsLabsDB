@@ -224,8 +224,12 @@ namespace PhysicsLabsDB.Devices
 
         private void delToolStripButton_Click(object sender, EventArgs e)
         {
-            //todo
-            //..
+            if(LoggedUser.AccountType == "employee")
+            {
+                MessageBox.Show("ليس لديك صلاحية", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             DialogResult dialogResult = MessageBox.Show("هل تريد حذف الجهاز", "رسالة تأكيد", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
