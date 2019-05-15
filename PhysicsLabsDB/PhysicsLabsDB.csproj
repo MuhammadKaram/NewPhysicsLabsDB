@@ -145,6 +145,12 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="inventory\frmInventory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="inventory\frmInventory.Designer.cs">
+      <DependentUpon>frmInventory.cs</DependentUpon>
+    </Compile>
     <Compile Include="lab.cs">
       <DependentUpon>physics_db.tt</DependentUpon>
     </Compile>
@@ -202,6 +208,9 @@
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="inventory\frmInventory.resx">
+      <DependentUpon>frmInventory.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -255,6 +264,7 @@
       <DependentUpon>physics_db.edmx</DependentUpon>
       <LastGenOutput>physics_db.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\iconfinder_icon-40-clipboard-list_314403.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -78,5 +78,14 @@ namespace PhysicsLabsDB
             frmAccounts.MdiParent = this;
             frmAccounts.Show();
         }
-    }
+
+		private void tsbtnInventory_Click(object sender, EventArgs e)
+		{
+			if (ActiveMdiChild != null)
+				ActiveMdiChild.Close();
+			inventory.frmInventory frmInventry = new inventory.frmInventory();
+			frmInventry.MdiParent = this;
+			frmInventry.Show();
+		}
+	}
 }

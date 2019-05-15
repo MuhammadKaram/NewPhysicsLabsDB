@@ -73,6 +73,16 @@ namespace PhysicsLabsDB.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_icon_40_clipboard_list_314403 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_icon-40-clipboard-list_314403", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap iconfinder_sign_add_299068 {
             get {
                 object obj = ResourceManager.GetObject("iconfinder_sign-add_299068", resourceCulture);
