@@ -40,6 +40,7 @@
 			this.colStatue = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.colLab = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.colRespon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.btnFinishInventory = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.grdVwInventory)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -90,7 +91,6 @@
 			this.txtBarcode.Size = new System.Drawing.Size(425, 26);
 			this.txtBarcode.TabIndex = 2;
 			this.txtBarcode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-			this.txtBarcode.TextChanged += new System.EventHandler(this.txtBarcode_TextChanged);
 			this.txtBarcode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBarcode_KeyDown);
 			// 
 			// grdVwInventory
@@ -106,7 +106,7 @@
             this.colStatue,
             this.colLab,
             this.colRespon});
-			this.grdVwInventory.Location = new System.Drawing.Point(34, 183);
+			this.grdVwInventory.Location = new System.Drawing.Point(34, 191);
 			this.grdVwInventory.Name = "grdVwInventory";
 			this.grdVwInventory.ReadOnly = true;
 			this.grdVwInventory.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -143,12 +143,25 @@
 			this.colRespon.Name = "colRespon";
 			this.colRespon.ReadOnly = true;
 			// 
+			// btnFinishInventory
+			// 
+			this.btnFinishInventory.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFinishInventory.BackgroundImage")));
+			this.btnFinishInventory.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+			this.btnFinishInventory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnFinishInventory.Location = new System.Drawing.Point(78, 122);
+			this.btnFinishInventory.Name = "btnFinishInventory";
+			this.btnFinishInventory.Size = new System.Drawing.Size(48, 43);
+			this.btnFinishInventory.TabIndex = 4;
+			this.btnFinishInventory.UseVisualStyleBackColor = true;
+			this.btnFinishInventory.Click += new System.EventHandler(this.btnFinishInventory_Click);
+			// 
 			// frmInventory
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 19F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.White;
 			this.ClientSize = new System.Drawing.Size(800, 452);
+			this.Controls.Add(this.btnFinishInventory);
 			this.Controls.Add(this.grdVwInventory);
 			this.Controls.Add(this.txtBarcode);
 			this.Controls.Add(this.lblEmployee);
@@ -184,5 +197,6 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn colStatue;
 		private System.Windows.Forms.DataGridViewTextBoxColumn colLab;
 		private System.Windows.Forms.DataGridViewTextBoxColumn colRespon;
+		private System.Windows.Forms.Button btnFinishInventory;
 	}
 }
