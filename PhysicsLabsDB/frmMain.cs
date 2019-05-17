@@ -51,13 +51,25 @@ namespace PhysicsLabsDB
 
 		private void employeeToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			Custody.frmCustody frmCustody = new Custody.frmCustody();
+            if (LoggedUser.AccountType == "employee")
+            {
+                MessageBox.Show("ليس لديك صلاحية", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            Custody.frmCustody frmCustody = new Custody.frmCustody();
 			frmCustody.ShowDialog();
 		}
 
 		private void custodyToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			Custody.frmTransferCustody frmTransferCustody = new Custody.frmTransferCustody();
+            if (LoggedUser.AccountType == "employee")
+            {
+                MessageBox.Show("ليس لديك صلاحية", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            Custody.frmTransferCustody frmTransferCustody = new Custody.frmTransferCustody();
 			frmTransferCustody.ShowDialog();
 		}
 
@@ -72,6 +84,12 @@ namespace PhysicsLabsDB
 
         private void tsbtnAccounts_Click(object sender, EventArgs e)
         {
+            if (LoggedUser.AccountType == "employee")
+            {
+                MessageBox.Show("ليس لديك صلاحية", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             if (ActiveMdiChild != null)
                 ActiveMdiChild.Close();
             Accounts.frmAccounts frmAccounts = new Accounts.frmAccounts();

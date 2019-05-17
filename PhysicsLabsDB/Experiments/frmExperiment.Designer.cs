@@ -69,9 +69,9 @@
             // 
             // btnExperimentsPicture
             // 
-            this.btnExperimentsPicture.Location = new System.Drawing.Point(859, 490);
+            this.btnExperimentsPicture.Location = new System.Drawing.Point(733, 490);
             this.btnExperimentsPicture.Name = "btnExperimentsPicture";
-            this.btnExperimentsPicture.Size = new System.Drawing.Size(217, 32);
+            this.btnExperimentsPicture.Size = new System.Drawing.Size(343, 32);
             this.btnExperimentsPicture.TabIndex = 26;
             this.btnExperimentsPicture.Text = "صورة للتجربة";
             this.btnExperimentsPicture.UseVisualStyleBackColor = true;
@@ -87,9 +87,9 @@
             // 
             // btnDeleteExpCopy
             // 
-            this.btnDeleteExpCopy.Location = new System.Drawing.Point(469, 490);
+            this.btnDeleteExpCopy.Location = new System.Drawing.Point(505, 490);
             this.btnDeleteExpCopy.Name = "btnDeleteExpCopy";
-            this.btnDeleteExpCopy.Size = new System.Drawing.Size(217, 32);
+            this.btnDeleteExpCopy.Size = new System.Drawing.Size(146, 32);
             this.btnDeleteExpCopy.TabIndex = 22;
             this.btnDeleteExpCopy.Text = "حذف نسخة";
             this.btnDeleteExpCopy.UseVisualStyleBackColor = true;
@@ -97,9 +97,9 @@
             // 
             // btnDeleteExperiment
             // 
-            this.btnDeleteExperiment.Location = new System.Drawing.Point(859, 452);
+            this.btnDeleteExperiment.Location = new System.Drawing.Point(733, 452);
             this.btnDeleteExperiment.Name = "btnDeleteExperiment";
-            this.btnDeleteExperiment.Size = new System.Drawing.Size(217, 32);
+            this.btnDeleteExperiment.Size = new System.Drawing.Size(343, 32);
             this.btnDeleteExperiment.TabIndex = 24;
             this.btnDeleteExperiment.Text = "حذف تجربة";
             this.btnDeleteExperiment.UseVisualStyleBackColor = true;
@@ -109,7 +109,7 @@
             // 
             this.btnEditExpDevices.Location = new System.Drawing.Point(74, 490);
             this.btnEditExpDevices.Name = "btnEditExpDevices";
-            this.btnEditExpDevices.Size = new System.Drawing.Size(217, 32);
+            this.btnEditExpDevices.Size = new System.Drawing.Size(343, 32);
             this.btnEditExpDevices.TabIndex = 19;
             this.btnEditExpDevices.Text = "تعديل أجهزة التجربة";
             this.btnEditExpDevices.UseVisualStyleBackColor = true;
@@ -117,9 +117,9 @@
             // 
             // btnAddExpCopy
             // 
-            this.btnAddExpCopy.Location = new System.Drawing.Point(469, 452);
+            this.btnAddExpCopy.Location = new System.Drawing.Point(505, 452);
             this.btnAddExpCopy.Name = "btnAddExpCopy";
-            this.btnAddExpCopy.Size = new System.Drawing.Size(217, 32);
+            this.btnAddExpCopy.Size = new System.Drawing.Size(146, 32);
             this.btnAddExpCopy.TabIndex = 21;
             this.btnAddExpCopy.Text = "إضافة نسخة";
             this.btnAddExpCopy.UseVisualStyleBackColor = true;
@@ -127,9 +127,9 @@
             // 
             // btnAddExperiment
             // 
-            this.btnAddExperiment.Location = new System.Drawing.Point(859, 414);
+            this.btnAddExperiment.Location = new System.Drawing.Point(733, 414);
             this.btnAddExperiment.Name = "btnAddExperiment";
-            this.btnAddExperiment.Size = new System.Drawing.Size(217, 32);
+            this.btnAddExperiment.Size = new System.Drawing.Size(343, 32);
             this.btnAddExperiment.TabIndex = 23;
             this.btnAddExperiment.Text = "إضافة تجربة";
             this.btnAddExperiment.UseVisualStyleBackColor = true;
@@ -143,7 +143,7 @@
             this.lstExperimentsDevices.Location = new System.Drawing.Point(74, 140);
             this.lstExperimentsDevices.Name = "lstExperimentsDevices";
             this.lstExperimentsDevices.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lstExperimentsDevices.Size = new System.Drawing.Size(217, 268);
+            this.lstExperimentsDevices.Size = new System.Drawing.Size(343, 268);
             this.lstExperimentsDevices.TabIndex = 18;
             this.lstExperimentsDevices.ValueMember = "ID";
             this.lstExperimentsDevices.DoubleClick += new System.EventHandler(this.lstExperimentsDevices_DoubleClick);
@@ -152,10 +152,10 @@
             // 
             this.lstExperimentsNum.FormattingEnabled = true;
             this.lstExperimentsNum.ItemHeight = 22;
-            this.lstExperimentsNum.Location = new System.Drawing.Point(469, 140);
+            this.lstExperimentsNum.Location = new System.Drawing.Point(505, 140);
             this.lstExperimentsNum.Name = "lstExperimentsNum";
             this.lstExperimentsNum.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lstExperimentsNum.Size = new System.Drawing.Size(217, 268);
+            this.lstExperimentsNum.Size = new System.Drawing.Size(146, 268);
             this.lstExperimentsNum.TabIndex = 17;
             this.lstExperimentsNum.SelectedIndexChanged += new System.EventHandler(this.lstExperimentsNum_SelectedIndexChanged);
             // 
@@ -163,17 +163,17 @@
             // 
             this.lstExperiments.FormattingEnabled = true;
             this.lstExperiments.ItemHeight = 22;
-            this.lstExperiments.Location = new System.Drawing.Point(859, 140);
+            this.lstExperiments.Location = new System.Drawing.Point(733, 140);
             this.lstExperiments.Name = "lstExperiments";
             this.lstExperiments.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lstExperiments.Size = new System.Drawing.Size(217, 268);
+            this.lstExperiments.Size = new System.Drawing.Size(343, 268);
             this.lstExperiments.TabIndex = 13;
             this.lstExperiments.SelectedIndexChanged += new System.EventHandler(this.lstExperiments_SelectedIndexChanged);
             // 
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(132, 101);
+            this.label21.Location = new System.Drawing.Point(200, 101);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(97, 22);
             this.label21.TabIndex = 14;
@@ -191,7 +191,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(944, 101);
+            this.label16.Location = new System.Drawing.Point(880, 101);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(57, 22);
             this.label16.TabIndex = 16;
