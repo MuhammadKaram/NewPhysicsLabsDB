@@ -158,6 +158,7 @@
             this.lstExperimentsNum.Size = new System.Drawing.Size(146, 268);
             this.lstExperimentsNum.TabIndex = 17;
             this.lstExperimentsNum.SelectedIndexChanged += new System.EventHandler(this.lstExperimentsNum_SelectedIndexChanged);
+            this.lstExperimentsNum.DoubleClick += new System.EventHandler(this.lstExperimentsNum_DoubleClick);
             // 
             // lstExperiments
             // 

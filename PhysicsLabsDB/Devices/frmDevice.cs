@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using MySql.Data.MySqlClient;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Linq;
@@ -272,8 +272,8 @@ namespace PhysicsLabsDB.Devices
             if (rdBarcode.Checked == true) { barcode = txtSearch.Text.Trim(); } else { barcode = DBNull.Value; }
 
             // must add reference to System.Configuration  from assemblies
-            MySqlConnection connection = new MySqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringSQL"].ConnectionString);
-            MySqlDataAdapter data_adabter = new MySqlDataAdapter();
+            SqlConnection connection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["PhysicsLabsDB.Properties.Settings.physics_dbConnectionStringSQL"].ConnectionString);
+            SqlDataAdapter data_adabter = new SqlDataAdapter();
             DataTable result = new DataTable();
 
             string query = @"select device_name,
@@ -289,7 +289,7 @@ namespace PhysicsLabsDB.Devices
             	   and (@barcode is null or device_barcode like CONCAT(@barcode, '%'));";
 
             connection.Open();
-            data_adabter = new MySqlDataAdapter(query, connection);
+            data_adabter = new SqlDataAdapter(query, connection);
             data_adabter.SelectCommand.Parameters.AddWithValue("@device", device);
             data_adabter.SelectCommand.Parameters.AddWithValue("@barcode", barcode);
             data_adabter.Fill(result);

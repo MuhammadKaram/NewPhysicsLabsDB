@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using MySql.Data.MySqlClient;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -65,8 +65,8 @@ namespace PhysicsLabsDB.Search
             if (chkStatus.Checked == true) { status = cmbStatus.SelectedItem; } else { status = DBNull.Value; }
 
             // must add reference to System.Configuration  from assemblies
-            MySqlConnection connection = new MySqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionStringSQL"].ConnectionString);
-            MySqlDataAdapter data_adabter = new MySqlDataAdapter();
+            SqlConnection connection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["PhysicsLabsDB.Properties.Settings.physics_dbConnectionStringSQL"].ConnectionString);
+            SqlDataAdapter data_adabter = new SqlDataAdapter();
             DataTable result = new DataTable();
 
             string query = @"select device_name,
@@ -86,7 +86,7 @@ namespace PhysicsLabsDB.Search
             	   and (@barcode is null or device_barcode like CONCAT(@barcode, '%'));";
 
             connection.Open();
-            data_adabter = new MySqlDataAdapter(query, connection);
+            data_adabter = new SqlDataAdapter(query, connection);
             data_adabter.SelectCommand.Parameters.AddWithValue("@device", device);
             data_adabter.SelectCommand.Parameters.AddWithValue("@experiment", experiment);
             data_adabter.SelectCommand.Parameters.AddWithValue("@employee", employee);

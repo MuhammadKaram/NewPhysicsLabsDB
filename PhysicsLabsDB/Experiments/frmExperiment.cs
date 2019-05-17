@@ -185,5 +185,35 @@ namespace PhysicsLabsDB.Experiments
         {
             MessageBox.Show(GetDeviceInfo((devices_tb)lstExperimentsDevices.SelectedItem), "بيانات الجهاز", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        private void lstExperimentsNum_DoubleClick(object sender, EventArgs e)
+        {
+            Reports.frmExperimentComponentsReport frmExperimentComponentsReport = new Reports.frmExperimentComponentsReport();
+            frmExperimentComponentsReport.lab_name = cmbLab.Text;
+            frmExperimentComponentsReport.exp_name = lstExperiments.SelectedItem.ToString();
+            frmExperimentComponentsReport.exp_num = Convert.ToInt32(lstExperimentsNum.SelectedItem); 
+            ////frmReport.reportViewer.LocalReport = Reports.;
+
+            ////set Processing Mode of Report as Local  
+            //frmReport.reportViewer.ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Local;
+            ////set path of the Local report  
+            ////frmReport.reportViewer.LocalReport.ReportPath = @"C:\Users\muham\source\PhysicsLabsDB\PhysicsLabsDB\Reports\rptExperimentComponents.rdlc";
+            ////creating object of DataSet dsEmployee and filling the DataSet using SQLDataAdapter  
+            //Reports.dsExperimentComponentsTableAdapters.devices_tbTableAdapter devices_tbTableAdapter
+            //    = new Reports.dsExperimentComponentsTableAdapters.devices_tbTableAdapter();
+            //Reports.dsExperimentComponents dsExperimentComponents = new Reports.dsExperimentComponents();
+            //devices_tbTableAdapter.Fill(dsExperimentComponents.devices_tb, lstExperiments.SelectedItem.ToString(), cmbLab.Text, Convert.ToInt32(lstExperimentsNum.SelectedItem));
+
+
+            ////Providing DataSource for the Report  
+            //Microsoft.Reporting.WinForms.ReportDataSource rds = new Microsoft.Reporting.WinForms.ReportDataSource("dsExperimentComponents", dsExperimentComponents.Tables[0]);
+            //frmReport.reportViewer.LocalReport.DataSources.Clear();
+            ////Add ReportDataSource  
+            //frmReport.reportViewer.LocalReport.DataSources.Add(rds);
+            //frmReport.reportViewer.LocalReport.Refresh();
+            //frmReport.reportViewer.RefreshReport();
+            frmExperimentComponentsReport.ShowDialog();
+
+        }
     }
 }

@@ -1,7 +1,10 @@
-CREATE USER 'PhysicsDepartment'@'localhost' IDENTIFIED BY 'r8462oo0123t';
+CREATE USER 'connect'@'localhost' IDENTIFIED BY 'r8462oo0123t';
 
 
-GRANT ALL PRIVILEGES ON * . * TO 'PhysicsDepartment'@'localhost';
+GRANT ALL PRIVILEGES ON * . * TO 'connect'@'localhost';
+
+// to allow remote access
+GRANT ALL PRIVILEGES ON *.* TO 'connect'@"%" IDENTIFIED BY 'r8462oo0123t';
 
 
 FLUSH PRIVILEGES; 

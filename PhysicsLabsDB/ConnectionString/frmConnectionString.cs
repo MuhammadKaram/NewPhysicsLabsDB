@@ -20,13 +20,13 @@ namespace PhysicsLabsDB.ConnectionString
 
         private void btnChangeConnection_Click(object sender, EventArgs e)
         {
-            string serverAddress = txtServerAddress.Text == string.Empty ? "localhost" : txtServerAddress.Text;
+            string serverAddress = txtServerAddress.Text == string.Empty ? @".\SQLEXPRESS" : txtServerAddress.Text;
             string userName = txtUserName.Text;
             string password = txtPassword.Text;
 
             string error = string.Empty;
             //if (txtServerAddress.Text == string.Empty)
-            //    error += "إدخل اسم الجهاز\n";
+            //    error += "إدخل عنوان الخادم\n";
             if (txtUserName.Text == string.Empty)
                 error += "إدخل اسم المستخدم\n";
             if (txtPassword.Text == string.Empty)
@@ -40,10 +40,11 @@ namespace PhysicsLabsDB.ConnectionString
 
             var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             var connectionStringsSection = (ConnectionStringsSection)config.GetSection("connectionStrings");
-            connectionStringsSection.ConnectionStrings["ConnectionStringSQL"].ConnectionString = "server="+serverAddress+"; database=Physics_DB; uid="+userName+";pwd="+password+";";
+            connectionStringsSection.ConnectionStrings["PhysicsLabsDB.Properties.Settings.physics_dbConnectionStringSQL"].ConnectionString = "Data Source=" + serverAddress + ";Initial Catalog=physics_db;Persist Security Info=True;User ID=" + userName + ";Password=" + password;
             // replace &quot;
             const string quote = "\"";
-            connectionStringsSection.ConnectionStrings["physics_dbEntities"].ConnectionString = @"metadata=res://*/physics_db.csdl|res://*/physics_db.ssdl|res://*/physics_db.msl;provider=MySql.Data.MySqlClient;provider connection string=" + quote + "server=" + serverAddress + ";user id=" + userName + ";password=" + password + @";persistsecurityinfo=True;database=physics_db" + quote;
+            connectionStringsSection.ConnectionStrings["physics_dbEntities"].ConnectionString = @"metadata=res://*/physics_db.csdl|res://*/physics_db.ssdl|res://*/physics_db.msl;provider=System.Data.SqlClient;provider connection string=" + quote + "data source=" + serverAddress + ";initial catalog=physics_db;persist security info=True;user id=" + userName + ";password=" + password + ";MultipleActiveResultSets=True;App=EntityFramework" + quote;
+                                                                                                
             config.Save();
             ConfigurationManager.RefreshSection("connectionStrings");
             this.Close();

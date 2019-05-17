@@ -41,11 +41,10 @@
             // txtServerAddress
             // 
             this.txtServerAddress.Location = new System.Drawing.Point(16, 71);
-            this.txtServerAddress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtServerAddress.Margin = new System.Windows.Forms.Padding(4);
             this.txtServerAddress.Name = "txtServerAddress";
             this.txtServerAddress.Size = new System.Drawing.Size(237, 26);
             this.txtServerAddress.TabIndex = 1;
-            this.txtServerAddress.Text = "localhost";
             // 
             // txtUserName
             // 
@@ -121,7 +120,7 @@
             this.Controls.Add(this.txtServerAddress);
             this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(284, 437);
             this.MinimizeBox = false;
