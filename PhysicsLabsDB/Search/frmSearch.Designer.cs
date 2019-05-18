@@ -45,7 +45,7 @@
             this.colDeviceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colBarcode = new System.Windows.Forms.DataGridViewLinkColumn();
             this.colLab = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colExperiment = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.colExperiment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colExperimentNum = new System.Windows.Forms.DataGridViewLinkColumn();
             this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colEmployee = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -253,7 +253,6 @@
             this.colExperiment.Name = "colExperiment";
             this.colExperiment.ReadOnly = true;
             this.colExperiment.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colExperiment.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // colExperimentNum
             // 
@@ -301,7 +300,7 @@
             this.Controls.Add(this.rdDevice);
             this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmSearch";
@@ -333,7 +332,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colDeviceName;
         private System.Windows.Forms.DataGridViewLinkColumn colBarcode;
         private System.Windows.Forms.DataGridViewTextBoxColumn colLab;
-        private System.Windows.Forms.DataGridViewLinkColumn colExperiment;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colExperiment;
         private System.Windows.Forms.DataGridViewLinkColumn colExperimentNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn colEmployee;
