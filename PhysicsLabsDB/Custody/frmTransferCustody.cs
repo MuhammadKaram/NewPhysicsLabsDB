@@ -28,16 +28,24 @@ namespace PhysicsLabsDB.Custody
 				{
 					List<devices_tb> OldRespon = db.devices_tb.Where(u => u.lab_name == cmbLab.Text && u.respon == cmbCurrentCustody.Text).ToList();
 
-					foreach (var r in OldRespon)
+                    string devicesBarcodes = string.Empty;
+
+                    foreach (var r in OldRespon)
 					{
 						r.respon = cmbNewCustody.Text;
+                        devicesBarcodes += (r.device_barcode.ToString()+ ",");
 					}
 					db.SaveChanges();
 
-					//cmbNewCustody.Text = string.Empty;
+                    Reports.frmTransferCustodyCrystalReport frmTransferCustodyReport = new Reports.frmTransferCustodyCrystalReport();
+                    frmTransferCustodyReport.employeeFrom = cmbCurrentCustody.Text;
+                    frmTransferCustodyReport.devicesBarcodes = devicesBarcodes;
+                    frmTransferCustodyReport.ShowDialog();
 
-					//lbxEmployee.Items.Clear();
-					var CurrentCustody = db.devices_tb.Where(u => u.lab_name == cmbLab.Text).Select(u => u.respon).Distinct().ToList();
+                    //cmbNewCustody.Text = string.Empty;
+
+                    //lbxEmployee.Items.Clear();
+                    var CurrentCustody = db.devices_tb.Where(u => u.lab_name == cmbLab.Text).Select(u => u.respon).Distinct().ToList();
 					cmbCurrentCustody.DataSource = CurrentCustody;
 					//cmbNewCustody.DataSource = db.respons.Select(u => u.name).ToList();
 				}

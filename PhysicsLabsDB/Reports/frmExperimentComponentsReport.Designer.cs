@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmExperimentComponentsReport));
             this.devices_tbBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsExperimentComponents = new PhysicsLabsDB.Reports.dsExperimentComponents();
-            this.reportViewer = new Microsoft.Reporting.WinForms.ReportViewer();
             this.devices_tbTableAdapter = new PhysicsLabsDB.Reports.dsExperimentComponentsTableAdapters.devices_tbTableAdapter();
+            this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.rptExperimentComponents1 = new PhysicsLabsDB.Reports.rptExperimentComponents();
             ((System.ComponentModel.ISupportInitialize)(this.devices_tbBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsExperimentComponents)).BeginInit();
             this.SuspendLayout();
@@ -49,35 +49,35 @@
             this.dsExperimentComponents.DataSetName = "dsExperimentComponents";
             this.dsExperimentComponents.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // reportViewer
-            // 
-            this.reportViewer.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource1.Name = "dsExperimentComponents";
-            reportDataSource1.Value = this.devices_tbBindingSource;
-            this.reportViewer.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer.LocalReport.ReportEmbeddedResource = "PhysicsLabsDB.Reports.rptExperimentComponents.rdlc";
-            this.reportViewer.Location = new System.Drawing.Point(0, 0);
-            this.reportViewer.Name = "reportViewer";
-            this.reportViewer.ServerReport.BearerToken = null;
-            this.reportViewer.Size = new System.Drawing.Size(627, 629);
-            this.reportViewer.TabIndex = 0;
-            // 
             // devices_tbTableAdapter
             // 
             this.devices_tbTableAdapter.ClearBeforeFill = true;
+            // 
+            // crystalReportViewer1
+            // 
+            this.crystalReportViewer1.ActiveViewIndex = 0;
+            this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.crystalReportViewer1.Location = new System.Drawing.Point(0, 0);
+            this.crystalReportViewer1.Name = "crystalReportViewer1";
+            this.crystalReportViewer1.ReportSource = this.rptExperimentComponents1;
+            this.crystalReportViewer1.Size = new System.Drawing.Size(865, 629);
+            this.crystalReportViewer1.TabIndex = 0;
+            this.crystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             // 
             // frmExperimentComponentsReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(627, 629);
-            this.Controls.Add(this.reportViewer);
+            this.ClientSize = new System.Drawing.Size(865, 629);
+            this.Controls.Add(this.crystalReportViewer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "frmExperimentComponentsReport";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "كارت التجربة";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmReport_Load);
             ((System.ComponentModel.ISupportInitialize)(this.devices_tbBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsExperimentComponents)).EndInit();
@@ -86,10 +86,10 @@
         }
 
         #endregion
-
-        private Microsoft.Reporting.WinForms.ReportViewer reportViewer;
         private System.Windows.Forms.BindingSource devices_tbBindingSource;
         private dsExperimentComponents dsExperimentComponents;
         private dsExperimentComponentsTableAdapters.devices_tbTableAdapter devices_tbTableAdapter;
+        private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
+        private rptExperimentComponents rptExperimentComponents1;
     }
 }

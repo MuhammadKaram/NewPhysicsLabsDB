@@ -36,7 +36,7 @@ namespace PhysicsLabsDB.Custody
 		private void btnAddEmploee_Click(object sender, EventArgs e)
 		{
 			string error = string.Empty;
-			if (txtNameEmplyee.Text == string.Empty)
+			if (txtNameEmplyee.Text.Trim() == string.Empty)
 				error += "إدخل اسم المتعهد\n";
 
 			if (error != string.Empty)
