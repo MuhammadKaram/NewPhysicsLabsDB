@@ -37,10 +37,14 @@ namespace PhysicsLabsDB.Custody
 					}
 					db.SaveChanges();
 
-                    Reports.frmTransferCustodyCrystalReport frmTransferCustodyReport = new Reports.frmTransferCustodyCrystalReport();
-                    frmTransferCustodyReport.employeeFrom = cmbCurrentCustody.Text;
-                    frmTransferCustodyReport.devicesBarcodes = devicesBarcodes;
-                    frmTransferCustodyReport.ShowDialog();
+                    DialogResult dialogResult2 = MessageBox.Show("هل تريد صباعة التقرير", "رسالة تأكيد", MessageBoxButtons.YesNo);
+                    if (dialogResult2 == DialogResult.Yes)
+                    {
+                        Reports.frmTransferCustodyCrystalReport frmTransferCustodyReport = new Reports.frmTransferCustodyCrystalReport();
+                        frmTransferCustodyReport.employeeFrom = cmbCurrentCustody.Text;
+                        frmTransferCustodyReport.devicesBarcodes = devicesBarcodes;
+                        frmTransferCustodyReport.ShowDialog();
+                    }
 
                     //cmbNewCustody.Text = string.Empty;
 

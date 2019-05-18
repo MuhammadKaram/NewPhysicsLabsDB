@@ -26,26 +26,10 @@ namespace PhysicsLabsDB.Devices
 
         public frmDevice(devices_tb currentDevice)// : base()
         {
-            this.currentDevice = currentDevice;
 
             InitializeComponent();
-
-            ClearControls();
-            ControlStatus(true);
-            btnDisplayBarcode.Enabled = false;
-            ToolStripButtonStatus(Status.Edit);
-            pnlOpenSearch.Enabled = true;
-            Search();
-            txtDeviceName.Text = currentDevice.device_name;
-            txtBarcode.Text = currentDevice.device_barcode.ToString();
-            cmbLab.SelectedItem = currentDevice.lab_name;
-            cmbExperiment.SelectedItem = currentDevice.exp_name;
-            cmbExperimentNum.SelectedItem = currentDevice.exp_num;
-            cmbStatus.SelectedItem = currentDevice.device_status;
-            cmbEmployee.SelectedItem = currentDevice.respon;
-            txtDescription.Text = currentDevice.description;
-            Zen.Barcode.Code128BarcodeDraw barcode = Zen.Barcode.BarcodeDrawFactory.Code128WithChecksum;
-            picBarcode.Image = barcode.Draw(currentDevice.device_barcode.ToString(), 50);
+            this.currentDevice = currentDevice;
+            
         }
 
         public void ClearControls()
@@ -135,6 +119,25 @@ namespace PhysicsLabsDB.Devices
                 ControlStatus(false);
                 ToolStripButtonStatus(Status.Reset);
             }
+            else
+            {
+                ClearControls();
+                ControlStatus(true);
+                btnDisplayBarcode.Enabled = false;
+                ToolStripButtonStatus(Status.Edit);
+                pnlOpenSearch.Enabled = true;
+                Search();
+                txtDeviceName.Text = currentDevice.device_name;
+                txtBarcode.Text = currentDevice.device_barcode.ToString();
+                cmbLab.SelectedItem = currentDevice.lab_name;
+                cmbExperiment.SelectedItem = currentDevice.exp_name;
+                cmbExperimentNum.SelectedItem = currentDevice.exp_num;
+                cmbStatus.SelectedItem = currentDevice.device_status;
+                cmbEmployee.SelectedItem = currentDevice.respon;
+                txtDescription.Text = currentDevice.description;
+                Zen.Barcode.Code128BarcodeDraw barcode = Zen.Barcode.BarcodeDrawFactory.Code128WithChecksum;
+                picBarcode.Image = barcode.Draw(currentDevice.device_barcode.ToString(), 50);
+            }
         }
 
         private void newToolStripButton_Click(object sender, EventArgs e)
@@ -196,6 +199,7 @@ namespace PhysicsLabsDB.Devices
                     {
                         var selectedItemBarcode = Convert.ToDecimal(txtBarcode.Text);
                         var device = db.devices_tb.FirstOrDefault(u => u.device_barcode == selectedItemBarcode);
+                        var oldRespon = device.respon; // for report printing
                         device.device_name = txtDeviceName.Text;
                         device.device_barcode = Convert.ToDecimal(txtBarcode.Text);
                         device.device_status = cmbStatus.Text;
@@ -207,6 +211,18 @@ namespace PhysicsLabsDB.Devices
                         db.SaveChanges();
 
                         MessageBox.Show("تم التعديل", "تم", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        if (oldRespon != cmbEmployee.Text)
+                        {
+                            DialogResult dialogResult2 = MessageBox.Show("لقد تم تغيير صاحب العهدة هل تريد صباعة التقرير", "رسالة تأكيد", MessageBoxButtons.YesNo);
+                            if (dialogResult2 == DialogResult.Yes)
+                            {
+                                Reports.frmTransferCustodyCrystalReport frmTransferCustodyReport = new Reports.frmTransferCustodyCrystalReport();
+                                frmTransferCustodyReport.employeeFrom = oldRespon;
+                                frmTransferCustodyReport.devicesBarcodes = device.device_barcode.ToString();
+                                frmTransferCustodyReport.ShowDialog();
+                            }
+                        }
 
                         //ClearControls();
                         ControlStatus(false);
