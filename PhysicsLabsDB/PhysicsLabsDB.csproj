@@ -178,6 +178,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsExperimentComponents.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Reports\dsTakhin.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsTakhin.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Reports\dsTransferCustody.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -189,6 +194,12 @@
     <Compile Include="Reports\frmExperimentComponentsReport.Designer.cs">
       <DependentUpon>frmExperimentComponentsReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\frmTakhinReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\frmTakhinReport.Designer.cs">
+      <DependentUpon>frmTakhinReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\frmTransferCustodyCrystalReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -199,6 +210,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptExperimentComponents.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptTakhin.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptTakhin.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\rptTransferCustody.cs">
@@ -262,12 +279,19 @@
     <EmbeddedResource Include="Reports\frmExperimentComponentsReport.resx">
       <DependentUpon>frmExperimentComponentsReport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\frmTakhinReport.resx">
+      <DependentUpon>frmTakhinReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\frmTransferCustodyCrystalReport.resx">
       <DependentUpon>frmTransferCustodyCrystalReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptExperimentComponents.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptExperimentComponents.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptTakhin.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptTakhin.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptTransferCustody.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -303,6 +327,17 @@
     </None>
     <None Include="Reports\dsExperimentComponents.xss">
       <DependentUpon>dsExperimentComponents.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\dsTakhin.xsc">
+      <DependentUpon>dsTakhin.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\dsTakhin.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsTakhin.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\dsTakhin.xss">
+      <DependentUpon>dsTakhin.xsd</DependentUpon>
     </None>
     <None Include="Reports\dsTransferCustody.xsc">
       <DependentUpon>dsTransferCustody.xsd</DependentUpon>

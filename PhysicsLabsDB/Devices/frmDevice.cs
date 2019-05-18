@@ -200,6 +200,7 @@ namespace PhysicsLabsDB.Devices
                         var selectedItemBarcode = Convert.ToDecimal(txtBarcode.Text);
                         var device = db.devices_tb.FirstOrDefault(u => u.device_barcode == selectedItemBarcode);
                         var oldRespon = device.respon; // for report printing
+                        var oldStatus = device.device_status; // for report printing
                         device.device_name = txtDeviceName.Text;
                         device.device_barcode = Convert.ToDecimal(txtBarcode.Text);
                         device.device_status = cmbStatus.Text;
@@ -221,6 +222,17 @@ namespace PhysicsLabsDB.Devices
                                 frmTransferCustodyReport.employeeFrom = oldRespon;
                                 frmTransferCustodyReport.devicesBarcodes = device.device_barcode.ToString();
                                 frmTransferCustodyReport.ShowDialog();
+                            }
+                        }
+
+                        if (oldStatus != "مكهن" && device.device_status == "مكهن")
+                        {
+                            DialogResult dialogResult2 = MessageBox.Show("لقد تم تكهين الجهاز هل تريد صباعة التقرير", "رسالة تأكيد", MessageBoxButtons.YesNo);
+                            if (dialogResult2 == DialogResult.Yes)
+                            {
+                                Reports.frmTakhinReport frmTakhinReport = new Reports.frmTakhinReport();
+                                frmTakhinReport.barcodes = device.device_barcode.ToString();
+                                frmTakhinReport.ShowDialog();
                             }
                         }
 

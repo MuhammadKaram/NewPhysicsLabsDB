@@ -26,14 +26,10 @@ namespace PhysicsLabsDB.Reports
             dsTransferCustody dsTransferCustody = new dsTransferCustody();
             dsTransferCustodyTableAdapters.devices_tbTableAdapter devices_tbTableAdapter = new dsTransferCustodyTableAdapters.devices_tbTableAdapter();
             devices_tbTableAdapter.FillByBarcodeListAndEmployeeFrom(dsTransferCustody.devices_tb, employeeFrom, devicesBarcodes);
-
-            //ReportDocument rpt = new ReportDocument();
-            //rpt.SetDataSource(dsTransferCustody);
-
-            rptTransferCustody1.SetDataSource(dsTransferCustody);
-            crystalReportViewer1.ReportSource = this.rptTransferCustody1;// chan_res_rpt_frm.change_respon_rpt1;
             
-            //crystalReportViewer1.ReportSource = rpt;
+            rptTransferCustody1.SetDataSource(dsTransferCustody);
+            crystalReportViewer1.ReportSource = this.rptTransferCustody1;
+            
             crystalReportViewer1.Refresh();
         }
     }

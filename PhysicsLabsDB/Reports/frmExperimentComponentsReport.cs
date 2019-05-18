@@ -23,14 +23,15 @@ namespace PhysicsLabsDB.Reports
 
         private void frmReport_Load(object sender, EventArgs e)
         {
-            //dsExperimentComponents dsExperimentComponents = new dsExperimentComponents();
-            // TODO: This line of code loads data into the 'dsExperimentComponents.devices_tb' table. You can move, or remove it, as needed.
-            this.devices_tbTableAdapter.Fill(this.dsExperimentComponents.devices_tb, exp_name,lab_name,exp_num);
+            dsExperimentComponents dsExperimentComponents = new dsExperimentComponents();
+            dsExperimentComponentsTableAdapters.devices_tbTableAdapter devices_tbTableAdapter = new dsExperimentComponentsTableAdapters.devices_tbTableAdapter();
+            devices_tbTableAdapter.Fill(dsExperimentComponents.devices_tb, exp_name, lab_name, exp_num);
+            // if uncomment this line you must comment the previous three lines
+            //this.devices_tbTableAdapter.Fill(this.dsExperimentComponents.devices_tb, exp_name,lab_name,exp_num);
 
             rptExperimentComponents1.SetDataSource(dsExperimentComponents);
-            crystalReportViewer1.ReportSource = this.rptExperimentComponents1;// chan_res_rpt_frm.change_respon_rpt1;
-
-            //crystalReportViewer1.ReportSource = rpt;
+            crystalReportViewer1.ReportSource = this.rptExperimentComponents1;
+            
             crystalReportViewer1.Refresh();
         }
     }
