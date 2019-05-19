@@ -105,5 +105,14 @@ namespace PhysicsLabsDB
 			frmInventry.MdiParent = this;
 			frmInventry.Show();
 		}
+
+		private void tsbtnDevicesWithoutExp_Click(object sender, EventArgs e)
+		{
+			if (ActiveMdiChild != null)
+				ActiveMdiChild.Close();
+			Devices.DevicesWithoutExperiment DevicesWithoutExperiment = new Devices.DevicesWithoutExperiment();
+			DevicesWithoutExperiment.MdiParent = this;
+			DevicesWithoutExperiment.Show();
+		}
 	}
 }
