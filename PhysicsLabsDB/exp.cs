@@ -18,5 +18,6 @@ namespace PhysicsLabsDB
         public string exp_name { get; set; }
         public int exp_num { get; set; }
         public string lab_name { get; set; }
+        public byte[] exp_img { get; set; }
     }
 }

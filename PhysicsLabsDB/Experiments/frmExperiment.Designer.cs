@@ -75,6 +75,7 @@
             this.btnExperimentsPicture.TabIndex = 26;
             this.btnExperimentsPicture.Text = "صورة للتجربة";
             this.btnExperimentsPicture.UseVisualStyleBackColor = true;
+            this.btnExperimentsPicture.Click += new System.EventHandler(this.btnExperimentsPicture_Click);
             // 
             // txtExperimetNum
             // 
@@ -170,6 +171,7 @@
             this.lstExperiments.Size = new System.Drawing.Size(343, 268);
             this.lstExperiments.TabIndex = 13;
             this.lstExperiments.SelectedIndexChanged += new System.EventHandler(this.lstExperiments_SelectedIndexChanged);
+            this.lstExperiments.DoubleClick += new System.EventHandler(this.lstExperiments_DoubleClick);
             // 
             // label21
             // 

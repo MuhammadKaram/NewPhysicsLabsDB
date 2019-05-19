@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -157,6 +157,12 @@
     </Compile>
     <Compile Include="Experiments\frmExperimentDevices.Designer.cs">
       <DependentUpon>frmExperimentDevices.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Experiments\frmExpPicture.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Experiments\frmExpPicture.Designer.cs">
+      <DependentUpon>frmExpPicture.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
@@ -323,6 +329,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Experiments\frmExperimentDevices.resx">
       <DependentUpon>frmExperimentDevices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Experiments\frmExpPicture.resx">
+      <DependentUpon>frmExpPicture.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>

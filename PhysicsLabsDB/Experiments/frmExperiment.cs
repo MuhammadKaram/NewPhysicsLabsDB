@@ -191,8 +191,53 @@ namespace PhysicsLabsDB.Experiments
             Reports.frmExperimentComponentsReport frmExperimentComponentsReport = new Reports.frmExperimentComponentsReport();
             frmExperimentComponentsReport.lab_name = cmbLab.Text;
             frmExperimentComponentsReport.exp_name = lstExperiments.SelectedItem.ToString();
-            frmExperimentComponentsReport.exp_num = Convert.ToInt32(lstExperimentsNum.SelectedItem); 
+            frmExperimentComponentsReport.exp_num = Convert.ToInt32(lstExperimentsNum.SelectedItem);
             frmExperimentComponentsReport.ShowDialog();
+        }
+
+        private void btnExperimentsPicture_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog opendlg = new OpenFileDialog();
+                if (opendlg.ShowDialog() == DialogResult.OK)
+                {
+                    Image image = Image.FromFile(opendlg.FileName);
+                    System.IO.MemoryStream ms = new System.IO.MemoryStream();
+                    image.Save(ms, image.RawFormat);
+                    List<exp> experiments = db.exps.Where(u => u.exp_name == lstExperiments.SelectedItem.ToString()).ToList();
+                    foreach (exp experiment in experiments)
+                    {
+                        experiment.exp_img = ms.ToArray();
+                    }
+                    db.SaveChanges();
+                    MessageBox.Show("تم", "تم", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void lstExperiments_DoubleClick(object sender, EventArgs e)
+        {
+            try
+            {
+                var experiment = db.exps.FirstOrDefault(u => u.exp_name == lstExperiments.SelectedItem.ToString());
+                byte[] expImageArray = experiment.exp_img;
+                frmExpPicture frmExpPicture = new frmExpPicture();
+                if (expImageArray != null)
+                {
+                    System.IO.MemoryStream ms = new System.IO.MemoryStream(expImageArray);
+                    frmExpPicture.msImg = ms;
+                }
+                frmExpPicture.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
