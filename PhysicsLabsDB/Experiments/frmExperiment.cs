@@ -227,12 +227,24 @@ namespace PhysicsLabsDB.Experiments
                 var experiment = db.exps.FirstOrDefault(u => u.exp_name == lstExperiments.SelectedItem.ToString());
                 byte[] expImageArray = experiment.exp_img;
                 frmExpPicture frmExpPicture = new frmExpPicture();
+                frmExpPicture.experiment = lstExperiments.SelectedItem.ToString();
                 if (expImageArray != null)
                 {
                     System.IO.MemoryStream ms = new System.IO.MemoryStream(expImageArray);
                     frmExpPicture.msImg = ms;
                 }
                 frmExpPicture.ShowDialog();
+
+                if(frmExpPicture.deleteImage == true)
+                {
+                    List<exp> experiments = db.exps.Where(u => u.exp_name == lstExperiments.SelectedItem.ToString()).ToList();
+                    foreach (exp exp in experiments)
+                    {
+                        exp.exp_img = null;
+                    }
+                    db.SaveChanges();
+                    MessageBox.Show("تم", "تم", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             catch (Exception ex)
             {

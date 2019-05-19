@@ -73,7 +73,7 @@
             this.btnExperimentsPicture.Name = "btnExperimentsPicture";
             this.btnExperimentsPicture.Size = new System.Drawing.Size(343, 32);
             this.btnExperimentsPicture.TabIndex = 26;
-            this.btnExperimentsPicture.Text = "صورة للتجربة";
+            this.btnExperimentsPicture.Text = "إضافة صورة للتجربة";
             this.btnExperimentsPicture.UseVisualStyleBackColor = true;
             this.btnExperimentsPicture.Click += new System.EventHandler(this.btnExperimentsPicture_Click);
             // 
