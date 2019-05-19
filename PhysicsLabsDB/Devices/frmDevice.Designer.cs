@@ -57,16 +57,16 @@
             this.pnlOpenSearch = new System.Windows.Forms.Panel();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.grdVwSearch = new System.Windows.Forms.DataGridView();
+            this.rdBarcode = new System.Windows.Forms.RadioButton();
+            this.rdDevice = new System.Windows.Forms.RadioButton();
             this.colDeviceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colBarcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colLab = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colExperiment = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.colExperiment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colExperimentNum = new System.Windows.Forms.DataGridViewLinkColumn();
             this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colEmployee = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rdBarcode = new System.Windows.Forms.RadioButton();
-            this.rdDevice = new System.Windows.Forms.RadioButton();
             this.tstrpDevices.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBarcode)).BeginInit();
             this.pnlOpenSearch.SuspendLayout();
@@ -377,6 +377,33 @@
             this.grdVwSearch.Size = new System.Drawing.Size(1119, 280);
             this.grdVwSearch.TabIndex = 22;
             this.grdVwSearch.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdVwSearch_CellClick);
+            this.grdVwSearch.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdVwSearch_CellContentClick);
+            // 
+            // rdBarcode
+            // 
+            this.rdBarcode.AutoSize = true;
+            this.rdBarcode.Location = new System.Drawing.Point(887, 16);
+            this.rdBarcode.Name = "rdBarcode";
+            this.rdBarcode.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.rdBarcode.Size = new System.Drawing.Size(68, 23);
+            this.rdBarcode.TabIndex = 21;
+            this.rdBarcode.Text = "الباركود";
+            this.rdBarcode.UseVisualStyleBackColor = true;
+            this.rdBarcode.CheckedChanged += new System.EventHandler(this.rdBarcode_CheckedChanged);
+            // 
+            // rdDevice
+            // 
+            this.rdDevice.AutoSize = true;
+            this.rdDevice.Checked = true;
+            this.rdDevice.Location = new System.Drawing.Point(1008, 16);
+            this.rdDevice.Name = "rdDevice";
+            this.rdDevice.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.rdDevice.Size = new System.Drawing.Size(85, 23);
+            this.rdDevice.TabIndex = 20;
+            this.rdDevice.TabStop = true;
+            this.rdDevice.Text = "اسم الجهاز";
+            this.rdDevice.UseVisualStyleBackColor = true;
+            this.rdDevice.CheckedChanged += new System.EventHandler(this.rdBarcode_CheckedChanged);
             // 
             // colDeviceName
             // 
@@ -404,7 +431,6 @@
             this.colExperiment.Name = "colExperiment";
             this.colExperiment.ReadOnly = true;
             this.colExperiment.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colExperiment.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // colExperimentNum
             // 
@@ -429,32 +455,6 @@
             this.colDescription.HeaderText = "الوصف";
             this.colDescription.Name = "colDescription";
             this.colDescription.ReadOnly = true;
-            // 
-            // rdBarcode
-            // 
-            this.rdBarcode.AutoSize = true;
-            this.rdBarcode.Location = new System.Drawing.Point(887, 16);
-            this.rdBarcode.Name = "rdBarcode";
-            this.rdBarcode.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.rdBarcode.Size = new System.Drawing.Size(68, 23);
-            this.rdBarcode.TabIndex = 21;
-            this.rdBarcode.Text = "الباركود";
-            this.rdBarcode.UseVisualStyleBackColor = true;
-            this.rdBarcode.CheckedChanged += new System.EventHandler(this.rdBarcode_CheckedChanged);
-            // 
-            // rdDevice
-            // 
-            this.rdDevice.AutoSize = true;
-            this.rdDevice.Checked = true;
-            this.rdDevice.Location = new System.Drawing.Point(1008, 16);
-            this.rdDevice.Name = "rdDevice";
-            this.rdDevice.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.rdDevice.Size = new System.Drawing.Size(85, 23);
-            this.rdDevice.TabIndex = 20;
-            this.rdDevice.TabStop = true;
-            this.rdDevice.Text = "اسم الجهاز";
-            this.rdDevice.UseVisualStyleBackColor = true;
-            this.rdDevice.CheckedChanged += new System.EventHandler(this.rdBarcode_CheckedChanged);
             // 
             // frmDevice
             // 
@@ -539,7 +539,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colDeviceName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colBarcode;
         private System.Windows.Forms.DataGridViewTextBoxColumn colLab;
-        private System.Windows.Forms.DataGridViewLinkColumn colExperiment;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colExperiment;
         private System.Windows.Forms.DataGridViewLinkColumn colExperimentNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn colEmployee;

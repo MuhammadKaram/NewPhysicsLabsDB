@@ -179,6 +179,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\frmDevicesWithoutExperimentsReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\frmDevicesWithoutExperimentsReport.Designer.cs">
+      <DependentUpon>frmDevicesWithoutExperimentsReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\dsDevicesWithoutExperiments.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsDevicesWithoutExperiments.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Reports\dsExperimentComponents.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -198,6 +209,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsTransferCustody.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\frmDevicesWithoutExpReportFilter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\frmDevicesWithoutExpReportFilter.Designer.cs">
+      <DependentUpon>frmDevicesWithoutExpReportFilter.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\frmExperimentComponentsReport.cs">
       <SubType>Form</SubType>
@@ -222,6 +239,12 @@
     </Compile>
     <Compile Include="Reports\frmTransferCustodyReport.Designer.cs">
       <DependentUpon>frmTransferCustodyReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\rptDevicesWithoutExperiments.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptDevicesWithoutExperiments.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\rptExperimentComponents.cs">
       <AutoGen>True</AutoGen>
@@ -302,6 +325,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Reports\frmDevicesWithoutExperimentsReport.resx">
+      <DependentUpon>frmDevicesWithoutExperimentsReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\frmDevicesWithoutExpReportFilter.resx">
+      <DependentUpon>frmDevicesWithoutExpReportFilter.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\frmExperimentComponentsReport.resx">
       <DependentUpon>frmExperimentComponentsReport.cs</DependentUpon>
     </EmbeddedResource>
@@ -313,6 +342,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\frmTransferCustodyReport.resx">
       <DependentUpon>frmTransferCustodyReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptDevicesWithoutExperiments.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptDevicesWithoutExperiments.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptExperimentComponents.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -350,6 +383,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Reports\dsDevicesWithoutExperiments.xsc">
+      <DependentUpon>dsDevicesWithoutExperiments.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\dsDevicesWithoutExperiments.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsDevicesWithoutExperiments.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\dsDevicesWithoutExperiments.xss">
+      <DependentUpon>dsDevicesWithoutExperiments.xsd</DependentUpon>
+    </None>
     <None Include="Reports\dsExperimentComponents.xsc">
       <DependentUpon>dsExperimentComponents.xsd</DependentUpon>
     </None>

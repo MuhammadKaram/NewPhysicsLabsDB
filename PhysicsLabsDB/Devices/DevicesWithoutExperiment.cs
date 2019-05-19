@@ -58,5 +58,12 @@ namespace PhysicsLabsDB.Devices
 		{
 			MessageBox.Show(GetDeviceInfo((devices_tb)lstNotWork.SelectedItem), "بيانات الجهاز", MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
-	}
+
+        private void btnFinishInventory_Click(object sender, EventArgs e)
+        {
+            Reports.frmDevicesWithoutExpReportFilter frmDevicesWithoutExpReportFilter = new Reports.frmDevicesWithoutExpReportFilter();
+            frmDevicesWithoutExpReportFilter.lab = cmbLabs.Text;
+            frmDevicesWithoutExpReportFilter.ShowDialog();
+        }
+    }
 }

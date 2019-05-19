@@ -475,5 +475,17 @@ namespace PhysicsLabsDB.Devices
         {
             Search();
         }
+
+        private void grdVwSearch_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 4)
+            {
+                Reports.frmExperimentComponentsReport frmExperimentComponentsReport = new Reports.frmExperimentComponentsReport();
+                frmExperimentComponentsReport.lab_name = grdVwSearch.Rows[grdVwSearch.CurrentRow.Index].Cells[2].Value.ToString();
+                frmExperimentComponentsReport.exp_name = grdVwSearch.Rows[grdVwSearch.CurrentRow.Index].Cells[3].Value.ToString();
+                frmExperimentComponentsReport.exp_num = Convert.ToInt32(grdVwSearch.CurrentCell.Value);
+                frmExperimentComponentsReport.ShowDialog();
+            }
+        }
     }
 }
