@@ -38,6 +38,7 @@
 			this.tsbtnExperiments = new System.Windows.Forms.ToolStripButton();
 			this.tsbtnAccounts = new System.Windows.Forms.ToolStripButton();
 			this.tsbtnInventory = new System.Windows.Forms.ToolStripButton();
+			this.tsbtnDevicesWithoutExp = new System.Windows.Forms.ToolStripButton();
 			this.tstrpMain.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -50,7 +51,8 @@
             this.tsbtnCustody,
             this.tsbtnExperiments,
             this.tsbtnAccounts,
-            this.tsbtnInventory});
+            this.tsbtnInventory,
+            this.tsbtnDevicesWithoutExp});
 			this.tstrpMain.Location = new System.Drawing.Point(0, 0);
 			this.tstrpMain.Name = "tstrpMain";
 			this.tstrpMain.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -129,6 +131,15 @@
 			this.tsbtnInventory.Text = "الجرد";
 			this.tsbtnInventory.Click += new System.EventHandler(this.tsbtnInventory_Click);
 			// 
+			// tsbtnDevicesWithoutExp
+			// 
+			this.tsbtnDevicesWithoutExp.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnDevicesWithoutExp.Image")));
+			this.tsbtnDevicesWithoutExp.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.tsbtnDevicesWithoutExp.Name = "tsbtnDevicesWithoutExp";
+			this.tsbtnDevicesWithoutExp.Size = new System.Drawing.Size(105, 22);
+			this.tsbtnDevicesWithoutExp.Text = "أجهزة بدون تجربة";
+			this.tsbtnDevicesWithoutExp.Click += new System.EventHandler(this.tsbtnDevicesWithoutExp_Click);
+			// 
 			// frmMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 22F);
@@ -165,5 +176,6 @@
         private System.Windows.Forms.ToolStripButton tsbtnExperiments;
         private System.Windows.Forms.ToolStripButton tsbtnAccounts;
 		private System.Windows.Forms.ToolStripButton tsbtnInventory;
+		private System.Windows.Forms.ToolStripButton tsbtnDevicesWithoutExp;
 	}
 }

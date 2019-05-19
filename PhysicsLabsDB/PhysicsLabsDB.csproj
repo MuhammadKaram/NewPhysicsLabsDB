@@ -101,6 +101,12 @@
     <Compile Include="Custody\frmTransferCustody.Designer.cs">
       <DependentUpon>frmTransferCustody.cs</DependentUpon>
     </Compile>
+    <Compile Include="Devices\DevicesWithoutExperiment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Devices\DevicesWithoutExperiment.Designer.cs">
+      <DependentUpon>DevicesWithoutExperiment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Devices\frmDevice.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -261,6 +267,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Custody\frmTransferCustody.resx">
       <DependentUpon>frmTransferCustody.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Devices\DevicesWithoutExperiment.resx">
+      <DependentUpon>DevicesWithoutExperiment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Devices\frmDevice.resx">
       <DependentUpon>frmDevice.cs</DependentUpon>
