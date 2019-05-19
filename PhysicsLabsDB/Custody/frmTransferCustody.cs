@@ -40,7 +40,7 @@ namespace PhysicsLabsDB.Custody
                     DialogResult dialogResult2 = MessageBox.Show("هل تريد صباعة التقرير", "رسالة تأكيد", MessageBoxButtons.YesNo);
                     if (dialogResult2 == DialogResult.Yes)
                     {
-                        Reports.frmTransferCustodyCrystalReport frmTransferCustodyReport = new Reports.frmTransferCustodyCrystalReport();
+                        Reports.frmTransferCustodyReport frmTransferCustodyReport = new Reports.frmTransferCustodyReport();
                         frmTransferCustodyReport.employeeFrom = cmbCurrentCustody.Text;
                         frmTransferCustodyReport.devicesBarcodes = devicesBarcodes;
                         frmTransferCustodyReport.ShowDialog();

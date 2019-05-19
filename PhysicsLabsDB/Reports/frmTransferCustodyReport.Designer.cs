@@ -1,6 +1,6 @@
 ﻿namespace PhysicsLabsDB.Reports
 {
-    partial class frmTakhinReport
+    partial class frmTransferCustodyReport
     {
         /// <summary>
         /// Required designer variable.
@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTakhinReport));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTransferCustodyReport));
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.rptTakhin1 = new PhysicsLabsDB.Reports.rptTakhin();
+            this.rptTransferCustody1 = new PhysicsLabsDB.Reports.rptTransferCustody();
             this.SuspendLayout();
             // 
             // crystalReportViewer1
@@ -41,23 +41,23 @@
             this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crystalReportViewer1.Location = new System.Drawing.Point(0, 0);
             this.crystalReportViewer1.Name = "crystalReportViewer1";
-            this.crystalReportViewer1.ReportSource = this.rptTakhin1;
+            this.crystalReportViewer1.ReportSource = this.rptTransferCustody1;
             this.crystalReportViewer1.Size = new System.Drawing.Size(800, 450);
             this.crystalReportViewer1.TabIndex = 0;
             this.crystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             // 
-            // frmTakhinReport
+            // frmTransferCustodyReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.crystalReportViewer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "frmTakhinReport";
+            this.Name = "frmTransferCustodyReport";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "تقرير التكهين";
+            this.Text = "تقرير نقل العهدة";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.frmTakhinReport_Load);
+            this.Load += new System.EventHandler(this.frmTransferCustodyReport_Load);
             this.ResumeLayout(false);
 
         }
@@ -65,6 +65,6 @@
         #endregion
 
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
-        private rptTakhin rptTakhin1;
+        private rptTransferCustody rptTransferCustody1;
     }
 }

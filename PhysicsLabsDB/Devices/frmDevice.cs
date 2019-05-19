@@ -218,7 +218,7 @@ namespace PhysicsLabsDB.Devices
                             DialogResult dialogResult2 = MessageBox.Show("لقد تم تغيير صاحب العهدة هل تريد صباعة التقرير", "رسالة تأكيد", MessageBoxButtons.YesNo);
                             if (dialogResult2 == DialogResult.Yes)
                             {
-                                Reports.frmTransferCustodyCrystalReport frmTransferCustodyReport = new Reports.frmTransferCustodyCrystalReport();
+                                Reports.frmTransferCustodyReport frmTransferCustodyReport = new Reports.frmTransferCustodyReport();
                                 frmTransferCustodyReport.employeeFrom = oldRespon;
                                 frmTransferCustodyReport.devicesBarcodes = device.device_barcode.ToString();
                                 frmTransferCustodyReport.ShowDialog();

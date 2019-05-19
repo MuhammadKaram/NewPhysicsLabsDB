@@ -1,6 +1,6 @@
 ﻿namespace PhysicsLabsDB.Reports
 {
-    partial class frmTransferCustodyCrystalReport
+    partial class frmInventoryReport
     {
         /// <summary>
         /// Required designer variable.
@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInventoryReport));
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.rptTransferCustody1 = new PhysicsLabsDB.Reports.rptTransferCustody();
+            this.rptInventory1 = new PhysicsLabsDB.Reports.rptInventory();
             this.SuspendLayout();
             // 
             // crystalReportViewer1
@@ -40,22 +41,23 @@
             this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crystalReportViewer1.Location = new System.Drawing.Point(0, 0);
             this.crystalReportViewer1.Name = "crystalReportViewer1";
-            this.crystalReportViewer1.ReportSource = this.rptTransferCustody1;
+            this.crystalReportViewer1.ReportSource = this.rptInventory1;
             this.crystalReportViewer1.Size = new System.Drawing.Size(800, 450);
             this.crystalReportViewer1.TabIndex = 0;
             this.crystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             // 
-            // frmTransferCustodyCrystalReport
+            // frmInventoryReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.crystalReportViewer1);
-            this.Name = "frmTransferCustodyCrystalReport";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "frmInventoryReport";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmTransferCustodyCrystalReport";
+            this.Text = "تقرير الجرد";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.frmTransferCustodyCrystalReport_Load);
+            this.Load += new System.EventHandler(this.frmInventoryReport_Load);
             this.ResumeLayout(false);
 
         }
@@ -63,6 +65,6 @@
         #endregion
 
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
-        private rptTransferCustody rptTransferCustody1;
+        private rptInventory rptInventory1;
     }
 }

@@ -25,14 +25,15 @@ namespace PhysicsLabsDB.inventory
 			grdVwInventory.AutoGenerateColumns = false;
 			cmbLabs.DataSource = db.labs.Select(u => u.lab_name).ToList();
 			//cmbEmployee.DataSource = db.respons.Select(u => u.name).ToList();
-			Search();
-		}
+			//Search();
+            txtBarcode.Focus();
+        }
 
 		private void cmbLabs_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			var Custody = db.devices_tb.Where(u => u.lab_name == cmbLabs.Text).Select(u => u.respon).Distinct().ToList();
 			cmbEmployee.DataSource = Custody;
-			Search();
+			//Search();
 		}
 
 		public void Search()
@@ -117,6 +118,25 @@ namespace PhysicsLabsDB.inventory
 				if (grdVwInventory.Rows[index].DefaultCellStyle.BackColor != Color.Green)
 					NotInventoryBarcodeList.Add(grdVwInventory.Rows[index].Cells[1].Value.ToString());
 			}
-		}
+            string inventoryBarcode = string.Empty;
+            string notInventoryBarcode = string.Empty;
+
+            foreach(var item in InventoryBarcodeList)
+            {
+                inventoryBarcode += (item + ",");
+            }
+
+            foreach (var item in NotInventoryBarcodeList)
+            {
+                notInventoryBarcode += (item + ",");
+            }
+
+            Reports.frmInventoryReport frmInventoryReport  = new Reports.frmInventoryReport();
+            frmInventoryReport.lab = cmbLabs.Text;
+            frmInventoryReport.respon = cmbEmployee.Text;
+            frmInventoryReport.inventoryBarcodes = inventoryBarcode;
+            frmInventoryReport.notInventoryBarcodes = notInventoryBarcode;
+            frmInventoryReport.ShowDialog();
+        }
 	}
 }

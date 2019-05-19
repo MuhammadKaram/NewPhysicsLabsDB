@@ -178,6 +178,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsExperimentComponents.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Reports\dsInventory.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsInventory.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Reports\dsTakhin.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -194,22 +199,34 @@
     <Compile Include="Reports\frmExperimentComponentsReport.Designer.cs">
       <DependentUpon>frmExperimentComponentsReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\frmInventoryReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\frmInventoryReport.Designer.cs">
+      <DependentUpon>frmInventoryReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\frmTakhinReport.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Reports\frmTakhinReport.Designer.cs">
       <DependentUpon>frmTakhinReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\frmTransferCustodyCrystalReport.cs">
+    <Compile Include="Reports\frmTransferCustodyReport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Reports\frmTransferCustodyCrystalReport.Designer.cs">
-      <DependentUpon>frmTransferCustodyCrystalReport.cs</DependentUpon>
+    <Compile Include="Reports\frmTransferCustodyReport.Designer.cs">
+      <DependentUpon>frmTransferCustodyReport.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\rptExperimentComponents.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptExperimentComponents.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptInventory.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptInventory.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\rptTakhin.cs">
@@ -279,15 +296,22 @@
     <EmbeddedResource Include="Reports\frmExperimentComponentsReport.resx">
       <DependentUpon>frmExperimentComponentsReport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\frmInventoryReport.resx">
+      <DependentUpon>frmInventoryReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\frmTakhinReport.resx">
       <DependentUpon>frmTakhinReport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\frmTransferCustodyCrystalReport.resx">
-      <DependentUpon>frmTransferCustodyCrystalReport.cs</DependentUpon>
+    <EmbeddedResource Include="Reports\frmTransferCustodyReport.resx">
+      <DependentUpon>frmTransferCustodyReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptExperimentComponents.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptExperimentComponents.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptInventory.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptInventory.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptTakhin.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -327,6 +351,17 @@
     </None>
     <None Include="Reports\dsExperimentComponents.xss">
       <DependentUpon>dsExperimentComponents.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\dsInventory.xsc">
+      <DependentUpon>dsInventory.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\dsInventory.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsInventory.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\dsInventory.xss">
+      <DependentUpon>dsInventory.xsd</DependentUpon>
     </None>
     <None Include="Reports\dsTakhin.xsc">
       <DependentUpon>dsTakhin.xsd</DependentUpon>
