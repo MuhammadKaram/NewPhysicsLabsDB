@@ -1,5 +1,0 @@
-1- in server properties make check remote access option and from security make it sql authontication and windows authontication
-2- from security => logins add new login with the default database physics_db and from server roles make it  sysadmin & serveradmin and from user mapping check your database and assign the new login to it
-3- from sql enterprice configuration manager enable TCP/UDP protocole and from its properties set the prot and ip to 1433 and machine static ip also in IPALL set dynamic port to null and port to 1433
-4- restart service
-5- from firwall advanced setting set two rules on to open port 1433 for remote access to sql server and another to open 1434 port to the dafaut instance remote connection

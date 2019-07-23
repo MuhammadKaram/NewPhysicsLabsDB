@@ -1,4 +1,0 @@
-MySQL Server community-5.7.18.1
-
-user: root
-password: r8462oo0123t
